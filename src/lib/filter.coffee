@@ -5,4 +5,4 @@ through = require 'through'
 module.exports = (test)->
   return through (data)->
     value = test data
-    if value? then @emit 'data', value
+    if value? then @queue value
