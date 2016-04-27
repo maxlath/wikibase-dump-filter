@@ -1,0 +1,16 @@
+#!/usr/bin/env coffee
+
+split = require 'split'
+filter = require 'stream-filter'
+
+[ claim ] = process.argv.slice 2
+
+unless /^P\d+:Q\d+$/.test claim
+  throw new Error "invalid claim: #{claim}"
+
+wikidataFilter = require('./lib/wikidata_filter')(claim)
+
+process.stdin
+.pipe split()
+.pipe filter(wikidataFilter)
+.pipe process.stdout
