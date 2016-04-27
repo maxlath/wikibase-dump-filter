@@ -32,4 +32,4 @@ module.exports = (options)->
     # keep only the desired attributes
     if keep? then entity = pick entity, keep
     # and return a string back
-    return JSON.stringify entity
+    return JSON.stringify(entity) + '\n'
