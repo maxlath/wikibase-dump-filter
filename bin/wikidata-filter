@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('../build/main.js')
+var path = require('path')
+require(path.join(__dirname, '..', 'build/main.js'))
