@@ -14,8 +14,11 @@
   "author": "maxlath",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.9.0",
+    "lodash.difference": "^4.2.0",
+    "lodash.pick": "^4.2.0",
     "split": "^1.0.0",
-    "stream-filter": "^1.0.0",
+    "through": "^2.3.8",
     "wikidata-sdk": "^2.5.0"
   }
 }
