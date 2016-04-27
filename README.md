@@ -2,6 +2,13 @@
 
 Filter a line-delimited json of Wikidata entities (typically a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)) into a subset of entities sharing the specified claim.
 
+## Installation
+this tool requires to have [NodeJs](http://nodejs.org) installed.
+
+```sh
+npm install -g wikidata-filter
+```
+
 ## Filter entities by [claim](https://www.wikidata.org/wiki/Wikidata:Glossary/en#Claims_and_statements)
 
 * **from a local file**
