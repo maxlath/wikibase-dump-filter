@@ -1,5 +1,3 @@
-#!/usr/bin/env coffee
-
 split = require 'split'
 program = require('./lib/program')()
 filter = require './lib/filter'

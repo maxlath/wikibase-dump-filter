@@ -10,7 +10,7 @@ module.exports = (options)->
   if not keep? and omit?
     keep = difference attributesList, omit
 
-  wdFilter = (line)->
+  return wdFilter = (line)->
     line = line.toString()
     # remove a possible trailing comma
     line = line.replace /,$/, ''

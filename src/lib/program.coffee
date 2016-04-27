@@ -1,5 +1,5 @@
 program = require 'commander'
-pkg = require '../package.json'
+pkg = require '../../package.json'
 validateArgs = require './validate_arguments'
 
 module.exports = ->
