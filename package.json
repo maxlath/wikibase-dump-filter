@@ -17,6 +17,10 @@
   ],
   "author": "maxlath",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:maxlath/wikidata-filter.git"
+  },
   "dependencies": {
     "commander": "^2.9.0",
     "lodash.difference": "^4.2.0",
