@@ -27,5 +27,13 @@
   },
   "devDependencies": {
     "coffee-script": "^1.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxlath/wikidata-filter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxlath/wikidata-filter/issues"
+  },
+  "homepage": "https://github.com/maxlath/wikidata-filter#readme"
 }
