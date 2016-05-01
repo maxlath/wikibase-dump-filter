@@ -28,10 +28,13 @@ module.exports = (options)->
       propClaims = entity.claims[P]
       unless propClaims?.length > 0 then return null
 
-      # filter-out this entity a claim of the desired property
-      # with the desired value
-      propClaims = wdk.simplifyPropertyClaims propClaims
-      unless Q in propClaims then return null
+      # let the possibility to let the claim value unspecified
+      # ex: wikidata-filter --claim P184
+      if Q?
+        # filter-out this entity a claim of the desired property
+        # with the desired value
+        propClaims = wdk.simplifyPropertyClaims propClaims
+        unless Q in propClaims then return null
 
     # keep only the desired attributes
     if keep? then entity = pick entity, keep
