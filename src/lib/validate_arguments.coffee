@@ -1,7 +1,7 @@
-attributesList = require './attributes_list'
+lists = require('./lists')
 
 module.exports = (program)->
-  { claim, omit, keep } = program
+  { claim, omit, keep, type } = program
 
   if claim?
     [ P, Q ] = claim.split ':'
@@ -16,11 +16,12 @@ module.exports = (program)->
   if omit? and keep?
     throw new Error 'use either omit or keep'
 
-  if omit? then validateAttributes 'omit', omit
-  if keep? then validateAttributes 'keep', keep
+  if omit? then validateValue 'omit', omit, lists.attributes
+  if keep? then validateValue 'keep', keep, lists.attributes
+  if type? then validateValue 'type', [type], lists.types
 
-validateAttributes = (label, attributes)->
+validateValue = (label, values, list)->
   valid = true
-  for attr in attributes
-    unless attr in attributesList
+  for attr in values
+    unless attr in list
       throw new Error "invalid value for #{label}: #{attr}"

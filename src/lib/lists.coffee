@@ -1,4 +1,4 @@
-module.exports = [
+exports.attributes = [
   'id'
   'type'
   'labels'
@@ -6,4 +6,10 @@ module.exports = [
   'aliases'
   'claims'
   'sitelinks'
+]
+
+exports.types = [
+  'item'
+  'property'
+  'both'
 ]

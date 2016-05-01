@@ -1,18 +1,22 @@
 wdk = require 'wikidata-sdk'
-attributesList = require './attributes_list'
+lists = require './lists'
 pick = require 'lodash.pick'
 difference = require 'lodash.difference'
 haveAMatch = require './have_a_match'
 
 module.exports = (options)->
-  { claim, omit, keep } = options
+  { claim, omit, keep, type } = options
 
   filterByClaim = claim?
   if filterByClaim
     [ P, Q ] = claim.split ':'
 
   if not keep? and omit?
-    keep = difference attributesList, omit
+    keep = difference lists.attributes, omit
+
+  type or= 'item'
+  if type is 'both' then expectedType = (t)-> true
+  else expectedType = (t)-> t is type
 
   return wdFilter = (line)->
     line = line.toString()
@@ -23,6 +27,8 @@ module.exports = (options)->
     unless line[0] is '{' then return null
     try entity = JSON.parse line
     catch err then return null
+
+    unless expectedType entity.type then return null
 
     if filterByClaim
       # filter-out this entity has claims of the desired property
