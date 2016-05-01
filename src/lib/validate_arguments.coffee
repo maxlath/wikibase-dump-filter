@@ -3,7 +3,7 @@ attributesList = require './attributes_list'
 module.exports = (program)->
   { claim, omit, keep } = program
 
-  unless /^P\d+:Q\d+$/.test claim
+  if claim? and not /^P\d+:Q\d+$/.test claim
     throw new Error "invalid claim: #{claim}"
 
   if omit? and keep?

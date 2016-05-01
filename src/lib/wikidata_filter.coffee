@@ -5,7 +5,10 @@ difference = require 'lodash.difference'
 
 module.exports = (options)->
   { claim, omit, keep } = options
-  [ P, Q ] = claim.split ':'
+
+  filterByClaim = claim?
+  if filterByClaim
+    [ P, Q ] = claim.split ':'
 
   if not keep? and omit?
     keep = difference attributesList, omit
@@ -20,14 +23,15 @@ module.exports = (options)->
     try entity = JSON.parse line
     catch err then return null
 
-    # filter-out this entity has claims of the desired property
-    propClaims = entity.claims[P]
-    unless propClaims?.length > 0 then return null
+    if filterByClaim
+      # filter-out this entity has claims of the desired property
+      propClaims = entity.claims[P]
+      unless propClaims?.length > 0 then return null
 
-    # filter-out this entity a claim of the desired property
-    # with the desired value
-    propClaims = wdk.simplifyPropertyClaims propClaims
-    unless Q in propClaims then return null
+      # filter-out this entity a claim of the desired property
+      # with the desired value
+      propClaims = wdk.simplifyPropertyClaims propClaims
+      unless Q in propClaims then return null
 
     # keep only the desired attributes
     if keep? then entity = pick entity, keep
