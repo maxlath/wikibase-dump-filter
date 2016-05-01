@@ -41,8 +41,7 @@ help =
     \t\t\t\tExample: to keep only labels and descriptions: `wikidata-filter -k labels,descriptions`\n"""
 
   type: """
-    Specify which entity type should be kept: item, property or both.
-    \t\t\t\tDefaults to item
+    Specify which entity type should be kept: item, property or both. Defaults to item.
     """
 
   languages: """

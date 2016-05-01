@@ -48,18 +48,25 @@ cat entities.json |wikidata-filter --claim P31:Q5 --keep id,type,labels,descript
 
   Options:
 
-    -h, --help               output usage information
+    -h, --help                   output usage information
 
-    -V, --version            output the version number
+    -V, --version                output the version number
 
-    -c, --claim <claim>      Specify the claim the entity should have to pass the filter.
-                             Example: to keep only entities of humans: `wikidata-filter -c P31:Q5`
+    -c, --claim <claim>          Specify the claim the entity should have to pass the filter.
+                                 Example: to keep only entities of humans: `wikidata-filter -c P31:Q5`
 
-    -o, --omit <attributes>  Specify the entities attributes to omit among wikidata entities attributes:
-                             type, labels, descriptions, aliases, claims, sitelinks.
-                             Example: to keep only labels and descriptions: `wikidata-filter -o aliases,claims,sitelink`
+    -o, --omit <attributes>      Specify the entities attributes to omit among wikidata entities attributes:
+                                 type, labels, descriptions, aliases, claims, sitelinks.
+                                 Example: to keep only labels and descriptions: `wikidata-filter -o aliases,claims,sitelink`
 
-    -k, --keep <attributes>  The inverse of omit: specify the attributes to keep.
-                             Example: to keep only labels and descriptions: `wikidata-filter -k labels,descriptions`
+    -k, --keep <attributes>      The inverse of omit: specify the attributes to keep.
+                                 Example: to keep only labels and descriptions: `wikidata-filter -k labels,descriptions`
 
+    -t, --type <type>            Specify which entity type should be kept: item, property or both.
+                                 Defaults to item.
+
+    -l, --languages <languages>  Specify for which languages labels, descriptions and aliases should be kept.
+
+    -s, --simplified             Flag to simplify claims values.
+                                 Defaults to false.
 ```
