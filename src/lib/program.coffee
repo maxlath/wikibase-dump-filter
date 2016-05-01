@@ -9,6 +9,7 @@ module.exports = ->
   .option '-o, --omit <attributes>', help.omit, list
   .option '-k, --keep <attributes>', help.keep, list
   .option '-t, --type <type>', help.type
+  .option '-l, --languages <languages>', help.languages, list
   .parse process.argv
 
   { claim, omit, keep, type } = program
@@ -41,4 +42,8 @@ help =
   type: """
     Specify which entity type should be kept: item, property or both.
     \t\t\t\tDefaults to item
+    """
+
+  languages: """
+    Specify for which languages labels, descriptions and aliases should be kept.
     """

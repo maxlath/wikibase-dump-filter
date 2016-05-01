@@ -8,6 +8,12 @@ exports.attributes = [
   'sitelinks'
 ]
 
+exports.attributesWithLanguages = [
+  'labels'
+  'descriptions'
+  'aliases'
+]
+
 exports.types = [
   'item'
   'property'

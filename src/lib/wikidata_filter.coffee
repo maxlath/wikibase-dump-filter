@@ -1,11 +1,12 @@
 wdk = require 'wikidata-sdk'
 lists = require './lists'
+{ attributesWithLanguages } = lists
 pick = require 'lodash.pick'
 difference = require 'lodash.difference'
 haveAMatch = require './have_a_match'
 
 module.exports = (options)->
-  { claim, omit, keep, type } = options
+  { claim, omit, keep, type, languages } = options
 
   filterByClaim = claim?
   if filterByClaim
@@ -14,9 +15,13 @@ module.exports = (options)->
   if not keep? and omit?
     keep = difference lists.attributes, omit
 
+  filterAttributes = keep?
+
   type or= 'item'
   if type is 'both' then expectedType = (t)-> true
   else expectedType = (t)-> t is type
+
+  filterLanguages = languages?
 
   return wdFilter = (line)->
     line = line.toString()
@@ -45,6 +50,13 @@ module.exports = (options)->
         unless haveAMatch Qs, propClaims then return null
 
     # keep only the desired attributes
-    if keep? then entity = pick entity, keep
+    if filterAttributes then entity = pick entity, keep
+
+    # with the desired languages
+    if filterLanguages
+      for attr in attributesWithLanguages
+        if entity[attr]?
+          entity[attr] = pick entity[attr], languages
+
     # and return a string back
     return JSON.stringify(entity) + '\n'
