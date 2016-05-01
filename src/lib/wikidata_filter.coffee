@@ -11,6 +11,9 @@ module.exports = (options)->
   filterByClaim = claim?
   if filterByClaim
     [ P, Q ] = claim.split ':'
+    negatedProp = P[0] is '~'
+    filterByClaimValue = Q?
+    if negatedProp then P = P.slice 1
 
   if not keep? and omit?
     keep = difference lists.attributes, omit
@@ -36,18 +39,25 @@ module.exports = (options)->
     unless expectedType entity.type then return null
 
     if filterByClaim
-      # filter-out this entity has claims of the desired property
+      # filter-out this entity unless it has claims of the desired property
       propClaims = entity.claims[P]
-      unless propClaims?.length > 0 then return null
+
+      if propClaims?.length > 0
+        if negatedProp and not filterByClaimValue then return null
+      else
+        unless negatedProp then return null
 
       # let the possibility to let the claim value unspecified
       # ex: wikidata-filter --claim P184
-      if Q?
+      if filterByClaimValue
         Qs = Q.split ','
-        # filter-out this entity a claim of the desired property
-        # with the desired value
+        # filter-out this entity unless it has a claim
+        # of the desired property with the desired value
         propClaims = wdk.simplifyPropertyClaims propClaims
-        unless haveAMatch Qs, propClaims then return null
+        if haveAMatch Qs, propClaims
+          if negatedProp then return null
+        else
+          unless negatedProp then return null
 
     # keep only the desired attributes
     if filterAttributes then entity = pick entity, keep

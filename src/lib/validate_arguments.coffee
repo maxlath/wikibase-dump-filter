@@ -5,7 +5,7 @@ module.exports = (program)->
 
   if claim?
     [ P, Q ] = claim.split ':'
-    unless /^P\d+$/.test P
+    unless /^~?P\d+$/.test P
       throw new Error "invalid claim property: #{P}"
     if Q?
       Qs = Q.split ','

@@ -12,19 +12,35 @@ describe 'wikidata_filter', ->
       done()
 
   describe 'claim', ->
-    it 'should return the entity if it has the specified claim', (done)->
-      result = wdFilter({ claim: 'P31:Q1454986' })(entityLine)
-      result.should.be.a.String()
-      result = wdFilter({ claim: 'P31' })(entityLine)
-      result.should.be.a.String()
-      done()
+    describe 'positive claim', ->
+      it 'should return the entity if it has the specified claim', (done)->
+        result = wdFilter({ claim: 'P31:Q1454986' })(entityLine)
+        result.should.be.a.String()
+        result = wdFilter({ claim: 'P31' })(entityLine)
+        result.should.be.a.String()
+        done()
 
-    it 'should not return the entity if it miss the specified claim', (done)->
-      result = wdFilter({ claim: 'P31:Q5' })(entityLine)
-      should(result).not.be.ok()
-      result = wdFilter({ claim: 'P2002' })(entityLine)
-      should(result).not.be.ok()
-      done()
+      it 'should not return the entity if it miss the specified claim', (done)->
+        result = wdFilter({ claim: 'P31:Q5' })(entityLine)
+        should(result).not.be.ok()
+        result = wdFilter({ claim: 'P2002' })(entityLine)
+        should(result).not.be.ok()
+        done()
+
+    describe 'negative claim', ->
+      it 'should not return the entity if it has the specified claim', (done)->
+        result = wdFilter({ claim: '~P31:Q1454986' })(entityLine)
+        should(result).not.be.ok()
+        result = wdFilter({ claim: '~P31' })(entityLine)
+        should(result).not.be.ok()
+        done()
+
+      it 'should return the entity if it miss the specified claim', (done)->
+        result = wdFilter({ claim: '~P31:Q5' })(entityLine)
+        should(result).be.ok()
+        result = wdFilter({ claim: '~P2002' })(entityLine)
+        should(result).be.ok()
+        done()
 
   describe 'attributes', ->
     describe 'keep', ->
