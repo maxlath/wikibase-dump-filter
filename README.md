@@ -14,6 +14,8 @@ npm install -g wikidata-filter
 * **from a local file**
 ```sh
 cat entities.json |wikidata-filter --claim P31:Q5 > humans.ndjson
+cat entities.json |wikidata-filter --claim P18 > entities_with_an_image.ndjson
+cat entities.json |wikidata-filter --claim P31:Q5,Q6256 > humans_and_countries.ndjson
 ```
 this command filters `entities_dump.json` into a subset where all lines are the json with an entity having [Q5](https://wikidata.org/entity/Q5) in it's [P31](https://wikidata.org/wiki/Property:P31) claims
 
