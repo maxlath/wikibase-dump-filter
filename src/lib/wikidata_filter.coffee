@@ -2,6 +2,7 @@ wdk = require 'wikidata-sdk'
 attributesList = require './attributes_list'
 pick = require 'lodash.pick'
 difference = require 'lodash.difference'
+haveAMatch = require './have_a_match'
 
 module.exports = (options)->
   { claim, omit, keep } = options
@@ -31,10 +32,11 @@ module.exports = (options)->
       # let the possibility to let the claim value unspecified
       # ex: wikidata-filter --claim P184
       if Q?
+        Qs = Q.split ','
         # filter-out this entity a claim of the desired property
         # with the desired value
         propClaims = wdk.simplifyPropertyClaims propClaims
-        unless Q in propClaims then return null
+        unless haveAMatch Qs, propClaims then return null
 
     # keep only the desired attributes
     if keep? then entity = pick entity, keep

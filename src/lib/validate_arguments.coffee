@@ -8,8 +8,10 @@ module.exports = (program)->
     unless /^P\d+$/.test P
       throw new Error "invalid claim property: #{P}"
     if Q?
-      unless /^Q\d+$/.test Q
-        throw new Error "invalid claim value: #{Q}"
+      Qs = Q.split ','
+      for q in Qs
+        unless /^Q\d+$/.test q
+          throw new Error "invalid claim value: #{q}"
 
   if omit? and keep?
     throw new Error 'use either omit or keep'
