@@ -6,7 +6,7 @@ difference = require 'lodash.difference'
 haveAMatch = require './have_a_match'
 
 module.exports = (options)->
-  { claim, omit, keep, type, languages } = options
+  { claim, omit, keep, type, languages, simplified } = options
 
   filterByClaim = claim?
   if filterByClaim
@@ -67,6 +67,11 @@ module.exports = (options)->
       for attr in attributesWithLanguages
         if entity[attr]?
           entity[attr] = pick entity[attr], languages
+
+    # with simplified claims if requested
+    if simplified
+      if entity.claims?
+        entity.claims = wdk.simplifyClaims entity.claims
 
     # and return a string back
     return JSON.stringify(entity) + '\n'

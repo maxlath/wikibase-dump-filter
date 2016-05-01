@@ -90,3 +90,16 @@ describe 'wikidata_filter', ->
       result.aliases.de.should.be.ok()
       Object.keys(result.aliases).length.should.equal 2
       done()
+
+  describe 'simplified', ->
+    it 'should simplify claims if true', (done)->
+      result = JSON.parse wdFilter({ simplified: true })(entityLine)
+      result.claims.P31[0].should.equal 'Q1454986'
+      done()
+
+    it 'should not simplify claims if false', (done)->
+      result = JSON.parse wdFilter({ simplified: false })(entityLine)
+      result.claims.P31[0].should.be.an.Object()
+      result = JSON.parse wdFilter({})(entityLine)
+      result.claims.P31[0].should.be.an.Object()
+      done()

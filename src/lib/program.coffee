@@ -10,6 +10,7 @@ module.exports = ->
   .option '-k, --keep <attributes>', help.keep, list
   .option '-t, --type <type>', help.type
   .option '-l, --languages <languages>', help.languages, list
+  .option '-s, --simplified', help.simplified
   .parse process.argv
 
   { claim, omit, keep, type } = program
@@ -46,4 +47,8 @@ help =
 
   languages: """
     Specify for which languages labels, descriptions and aliases should be kept.
+    """
+
+  simplified: """
+    Flag to simplify claims values. Defaults to false.
     """

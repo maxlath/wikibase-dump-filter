@@ -1,7 +1,7 @@
 lists = require('./lists')
 
 module.exports = (program)->
-  { claim, omit, keep, type, languages } = program
+  { claim, omit, keep, type, languages, simplified } = program
 
   if claim?
     [ P, Q ] = claim.split ':'
