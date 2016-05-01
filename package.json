@@ -7,7 +7,7 @@
     "wikidata-filter": "bin/wikidata-filter"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers coffee:coffee-script/register test/*",
     "build": "rm -rf build; ./node_modules/coffee-script/bin/coffee -o build -c src",
     "watch": "onchange ./src -- npm run build",
     "init-fixtures": "./scripts/init_fixtures"
