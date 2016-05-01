@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf build; ./node_modules/coffee-script/bin/coffee -o build -c src"
+    "build": "rm -rf build; ./node_modules/coffee-script/bin/coffee -o build -c src",
+    "init-fixtures": "./scripts/init_fixtures"
   },
   "keywords": [
     "wikidata",

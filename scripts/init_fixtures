@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# a script to get some entities to play with
+
+mkdir -p fixtures
+# get the first 100 lines of the latest dump
+curl -s https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz |gzip -d |head -n 100 > ./fixtures/entities
