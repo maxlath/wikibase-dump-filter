@@ -2,14 +2,13 @@
   "name": "wikidata-filter",
   "version": "1.1.1",
   "description": "Filter a line-delimited json of Wikidata entities (typically a dump) into a subset of entities sharing the specified claim.",
-  "main": "build/index.js",
+  "main": "index.js",
   "bin": {
     "wikidata-filter": "bin/wikidata-filter"
   },
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register test/*",
-    "build": "rm -rf build; ./node_modules/coffee-script/bin/coffee -o build -c src",
-    "watch": "onchange ./src -- npm run build",
+    "test": "mocha",
+    "lint": "standard",
     "init-fixtures": "./scripts/init_fixtures"
   },
   "keywords": [
@@ -24,15 +23,12 @@
     "lodash.difference": "^4.2.0",
     "lodash.pick": "^4.2.0",
     "split": "^1.0.0",
-    "through": "^2.3.8",
     "wikidata-sdk": "^2.5.0"
   },
   "devDependencies": {
-    "coffee-errors": "^0.8.6",
-    "coffee-script": "^1.10.0",
-    "mocha": "^2.4.5",
-    "onchange": "^2.4.0",
-    "should": "^8.3.1"
+    "mocha": "^3.2.0",
+    "should": "^11.1.2",
+    "standard": "^8.6.0"
   },
   "repository": {
     "type": "git",
