@@ -1,4 +1,4 @@
-# Wikidata filter
+# Wikidata filter
 
 Filter a line-delimited json of Wikidata entities (typically a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)) into a subset of entities sharing the specified claim.
 
@@ -70,3 +70,32 @@ cat entities.json |wikidata-filter --claim P31:Q5 --keep id,type,labels,descript
     -s, --simplified             Flag to simplify claims values.
                                  Defaults to false.
 ```
+
+
+## Donate
+
+We are developing and maintaining tools to work with Wikidata from NodeJS, the browser, or simply the command line, with quality and ease of use at heart. Any donation will be interpreted as a "please keep going, your work is very much needed and awesome. PS: love". [Donate](https://liberapay.com/WikidataJS)
+
+## See Also
+
+### [wikidata-sdk](https://github.com/maxlath/wikidata-sdk)
+a javascript tool suite to query and work with wikidata data, heavily used by wikidata-cli
+
+### [wikidata-edit](https://www.npmjs.com/package/wikidata-edit)
+Edit Wikidata from NodeJS
+
+### [wikidata-cli](https://github.com/maxlath/wikidata-cli)
+The command-line interface to Wikidata
+
+### [wikidata-filter](https://github.com/maxlath/wikidata-filter)
+A command-line tool to filter a Wikidata dump by claim
+
+### [wikidata-subset-search-engine](https://github.com/inventaire/wikidata-subset-search-engine) Tools to setup an ElasticSearch instance fed with subsets of Wikidata
+
+### [wikidata-taxonomy](https://github.com/nichtich/wikidata-taxonomy)
+Command-line tool to extract taxonomies from Wikidata
+
+### [Other Wikidata external tools](https://www.wikidata.org/wiki/Wikidata:Tools/External_tools)
+
+# License
+[MIT](LICENSE.md)
