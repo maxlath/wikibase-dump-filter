@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha",
     "lint": "standard",
-    "init-fixtures": "./scripts/init_fixtures"
+    "init-fixtures": "./scripts/init_fixtures",
+    "update-toc": "doctoc README.md"
   },
   "keywords": [
     "wikidata",
@@ -26,6 +27,7 @@
     "wikidata-sdk": "^2.5.0"
   },
   "devDependencies": {
+    "doctoc": "^1.2.0",
     "git-hooks": "^1.1.7",
     "mocha": "^3.2.0",
     "should": "^11.1.2",

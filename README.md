@@ -2,6 +2,23 @@
 
 Filter a line-delimited json of Wikidata entities (typically a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)) into a subset of entities sharing the specified claim.
 
+## Summary
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Installation](#installation)
+- [Filter entities by claim](#filter-entities-by-claim)
+- [Filter entities attributes](#filter-entities-attributes)
+- [Options](#options)
+- [Donate](#donate)
+- [See Also](#see-also)
+- [You may also like](#you-may-also-like)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Installation
 this tool requires to have [NodeJs](http://nodejs.org) installed.
 
@@ -78,24 +95,32 @@ We are developing and maintaining tools to work with Wikidata from NodeJS, the b
 
 ## See Also
 
-### [wikidata-sdk](https://github.com/maxlath/wikidata-sdk)
+* [wikidata-sdk](https://github.com/maxlath/wikidata-sdk)
 a javascript tool suite to query and work with wikidata data, heavily used by wikidata-cli
 
-### [wikidata-edit](https://www.npmjs.com/package/wikidata-edit)
+* [wikidata-edit](https://www.npmjs.com/package/wikidata-edit)
 Edit Wikidata from NodeJS
 
-### [wikidata-cli](https://github.com/maxlath/wikidata-cli)
+* [wikidata-cli](https://github.com/maxlath/wikidata-cli)
 The command-line interface to Wikidata
 
-### [wikidata-filter](https://github.com/maxlath/wikidata-filter)
+* [wikidata-filter](https://github.com/maxlath/wikidata-filter)
 A command-line tool to filter a Wikidata dump by claim
 
-### [wikidata-subset-search-engine](https://github.com/inventaire/wikidata-subset-search-engine) Tools to setup an ElasticSearch instance fed with subsets of Wikidata
+* [wikidata-subset-search-engine](https://github.com/inventaire/wikidata-subset-search-engine)
+Tools to setup an ElasticSearch instance fed with subsets of Wikidata
 
-### [wikidata-taxonomy](https://github.com/nichtich/wikidata-taxonomy)
+* [wikidata-taxonomy](https://github.com/nichtich/wikidata-taxonomy)
 Command-line tool to extract taxonomies from Wikidata
 
-### [Other Wikidata external tools](https://www.wikidata.org/wiki/Wikidata:Tools/External_tools)
+* [Other Wikidata external tools](https://www.wikidata.org/wiki/Wikidata:Tools/External_tools)
+-------------
 
-# License
+## You may also like
+
+[![inventaire banner](https://inventaire.io/public/images/inventaire-brittanystevens-13947832357-CC-BY-lighter-blue-4-banner-500px.png)](https://inventaire.io)
+
+Do you know [inventaire.io](https://inventaire.io/)? It's a web app to share books with your friends built on top of Wikidata! And its [libre software](http://github.com/inventaire/inventaire) too.
+
+## License
 [MIT](LICENSE.md)
