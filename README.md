@@ -30,9 +30,9 @@ npm install -g wikidata-filter
 
 * **from a local file**
 ```sh
-cat entities.json |wikidata-filter --claim P31:Q5 > humans.ndjson
-cat entities.json |wikidata-filter --claim P18 > entities_with_an_image.ndjson
-cat entities.json |wikidata-filter --claim P31:Q5,Q6256 > humans_and_countries.ndjson
+cat entities.json | wikidata-filter --claim P31:Q5 > humans.ndjson
+cat entities.json | wikidata-filter --claim P18 > entities_with_an_image.ndjson
+cat entities.json | wikidata-filter --claim P31:Q5,Q6256 > humans_and_countries.ndjson
 ```
 this command filters `entities_dump.json` into a subset where all lines are the json with an entity having [Q5](https://wikidata.org/entity/Q5) in it's [P31](https://wikidata.org/wiki/Property:P31) claims
 
@@ -40,7 +40,7 @@ this command filters `entities_dump.json` into a subset where all lines are the 
 
 * **directly from a Wikidata dump**
 ```sh
-curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz |gzip -d |wikidata-filter --claim P31:Q5 > humans.ndjson
+curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip -d | wikidata-filter --claim P31:Q5 > humans.ndjson
 ```
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 
@@ -53,9 +53,9 @@ All in all, this whole takes a lot of place and might not be needed in your use 
 
 This can be done with either the `--keep` or the `--omit` command:
 ```sh
-cat entities.json |wikidata-filter --claim P31:Q5 --omit claims,sitelinks > humans.ndjson
+cat entities.json | wikidata-filter --claim P31:Q5 --omit claims,sitelinks > humans.ndjson
 # which is equivalent to
-cat entities.json |wikidata-filter --claim P31:Q5 --keep id,type,labels,descriptions,aliases > humans.ndjson
+cat entities.json | wikidata-filter --claim P31:Q5 --keep id,type,labels,descriptions,aliases > humans.ndjson
 ```
 
 ## Options
