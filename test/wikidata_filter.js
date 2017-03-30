@@ -1,4 +1,3 @@
-const { describe, it } = global
 const should = require('should')
 const fs = require('fs')
 

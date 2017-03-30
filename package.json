@@ -41,5 +41,11 @@
   "bugs": {
     "url": "https://github.com/maxlath/wikidata-filter/issues"
   },
-  "homepage": "https://github.com/maxlath/wikidata-filter#readme"
+  "homepage": "https://github.com/maxlath/wikidata-filter#readme",
+  "standard": {
+    "globals": [
+      "it",
+      "describe"
+    ]
+  }
 }
