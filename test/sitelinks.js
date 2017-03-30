@@ -5,6 +5,12 @@ const wdFilter = require('../lib/wikidata_filter')
 const entityLine = fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' })
 
 describe('sitelinks', function () {
+  describe('validation', function () {
+    it('should reject invalid sitelinks', function (done) {
+      should(() => wdFilter({ sitelink: 'frwi-ki|enwiki&elficwiki' })).throw()
+      done()
+    })
+  })
   it('should return the entity if it has the specified sitelink', function (done) {
     const result = wdFilter({ sitelink: 'frwiki' })(entityLine)
     result.should.be.a.String()
@@ -33,10 +39,6 @@ describe('sitelinks', function () {
   it("should not return the entity if it doesn't match all the required groups", function (done) {
     const result = wdFilter({ sitelink: 'frwiki|enwiki&elficwiki' })(entityLine)
     should(result).not.be.a.String()
-    done()
-  })
-  it('should reject invalid sitelinks', function (done) {
-    should(() => wdFilter({ sitelink: 'frwi-ki|enwiki&elficwiki' })).throw()
     done()
   })
 })

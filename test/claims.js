@@ -5,6 +5,13 @@ const wdFilter = require('../lib/wikidata_filter')
 const entityLine = fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' })
 
 describe('claims', function () {
+  describe('validation', function () {
+    it('should reject an invalid claim', function (done) {
+      should(() => wdFilter({ claim: 'P31z' })).throw()
+      should(() => wdFilter({ claim: 'P31:Q141z' })).throw()
+      done()
+    })
+  })
   describe('positive claim', function () {
     it('should return the entity if it has the specified claim', function (done) {
       const result = wdFilter({ claim: 'P31:Q3336843' })(entityLine)
