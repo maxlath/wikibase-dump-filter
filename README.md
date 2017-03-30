@@ -15,7 +15,9 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
   - [by type](#by-type)
 - [Format entities](#format-entities)
   - [Filter attributes](#filter-attributes)
-- [Options](#options)
+  - [Filter languages](#filter-languages)
+  - [Simplify claims](#simplify-claims)
+- [Other options](#other-options)
 - [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)
@@ -86,35 +88,27 @@ All in all, this whole takes a lot of place and might not be needed in your use 
 
 This can be done with either the `--keep` or the `--omit` command:
 ```sh
-cat entities.json | wikidata-filter --claim P31:Q5 --omit claims,sitelinks > humans.ndjson
+cat entities.json | wikidata-filter --omit claims,sitelinks > humans.ndjson
 # which is equivalent to
-cat entities.json | wikidata-filter --claim P31:Q5 --keep id,type,labels,descriptions,aliases > humans.ndjson
+cat entities.json | wikidata-filter --keep id,type,labels,descriptions,aliases > humans.ndjson
 ```
 
-## Options
+### Filter languages
+Keep only the desired languages for labels, descriptions, and aliases
+```sh
+cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
+```
+
+### Simplify claims
+Use [wikidata-sdk `simplifyClaims` function](https://github.com/maxlath/wikidata-sdk#simplify-claims-results) to parse claims.
+```sh
+cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
+```
+
+## Other options
 ```
 -h, --help                   output usage information
 -V, --version                output the version number
--t, --type <type>
-    Specify which entity type should be kept: item, property or both. Defaults to item.
-
--c, --claim <claim>
-    Specify the claim the entity should have to pass the filter.
-
--i, --sitelink <sitelink>
-    Specify the sitelink the entity should have to pass the filter.
-
--o, --omit <attributes>
-    Specify the entities attributes to omit among wikidata entities attributes: type, labels, descriptions, aliases, claims, sitelinks.
-
--k, --keep <attributes>
-    The inverse of omit: specify the attributes to keep.
-
--l, --languages <languages>
-    Specify for which languages labels, descriptions and aliases should be kept.
-
--s, --simplified
-    Flag to simplify claims values. Defaults to false.
 ```
 
 ## Donate
