@@ -103,8 +103,8 @@ Keep only the desired languages for labels, descriptions, and aliases
 cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
 ```
 
-### Simplify claims
-Use [wikidata-sdk `simplifyClaims` function](https://github.com/maxlath/wikidata-sdk#simplify-claims-results) to parse claims.
+### Simplify entity data
+Use [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk#simplify-entity) to parse the labels, descriptions, aliases, claims, and sitelinks.
 ```sh
 cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
 ```
