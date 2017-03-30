@@ -49,15 +49,18 @@ describe('format', function () {
 
   describe('languages', function () {
     it('should keep data for the specified languages', function (done) {
-      const result = JSON.parse(wdFilter({ languages: ['es', 'de'] })(entityLine))
+      const result = JSON.parse(wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(entityLine))
       result.labels.es.should.be.ok()
       result.labels.de.should.be.ok()
-      Object.keys(result.labels).length.should.equal(2)
+      result.labels.ca.should.be.ok()
+      result.labels.th.should.be.ok()
+      Object.keys(result.labels).length.should.equal(4)
       result.descriptions.es.should.be.ok()
       result.descriptions.de.should.be.ok()
-      Object.keys(result.descriptions).length.should.equal(2)
-      result.aliases.es.should.be.ok()
-      result.aliases.de.should.be.ok()
+      result.descriptions.ca.should.be.ok()
+      Object.keys(result.descriptions).length.should.equal(3)
+      result.aliases.ca.should.be.ok()
+      result.aliases.th.should.be.ok()
       Object.keys(result.aliases).length.should.equal(2)
       done()
     })
@@ -66,7 +69,7 @@ describe('format', function () {
   describe('simplified', function () {
     it('should simplify claims if true', function (done) {
       const result = JSON.parse(wdFilter({ simplified: true })(entityLine))
-      result.claims.P31[0].should.equal('Q1454986')
+      result.claims.P31[0].should.equal('Q3336843')
       done()
     })
 

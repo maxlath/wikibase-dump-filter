@@ -11,32 +11,32 @@ describe('sitelinks', function () {
     done()
   })
   it("should not return the entity if it doesn't have the sitelink", function (done) {
-    const result = wdFilter({ sitelink: 'commonswiki' })(entityLine)
+    const result = wdFilter({ sitelink: 'elficwiki' })(entityLine)
     should(result).not.be.ok()
     done()
   })
   it('should return the entity if it has one of the possible sitelink', function (done) {
-    const result = wdFilter({ sitelink: 'commonswiki|frwiki' })(entityLine)
+    const result = wdFilter({ sitelink: 'elficwiki|frwiki' })(entityLine)
     result.should.be.a.String()
     done()
   })
   it("should not return the entity if it donesn't have one of the required sitelinks", function (done) {
-    const result = wdFilter({ sitelink: 'commonswiki&frwiki' })(entityLine)
+    const result = wdFilter({ sitelink: 'elficwiki&frwiki' })(entityLine)
     should(result).not.be.ok()
     done()
   })
   it('should return the entity if it matches all the required groups', function (done) {
-    const result = wdFilter({ sitelink: 'commonswiki|frwiki&enwiki' })(entityLine)
+    const result = wdFilter({ sitelink: 'elficwiki|frwiki&enwiki' })(entityLine)
     result.should.be.a.String()
     done()
   })
   it("should not return the entity if it doesn't match all the required groups", function (done) {
-    const result = wdFilter({ sitelink: 'frwiki|enwiki&commonswiki' })(entityLine)
+    const result = wdFilter({ sitelink: 'frwiki|enwiki&elficwiki' })(entityLine)
     should(result).not.be.a.String()
     done()
   })
   it('should reject invalid sitelinks', function (done) {
-    should(() => wdFilter({ sitelink: 'frwi-ki|enwiki&commonswiki' })).throw()
+    should(() => wdFilter({ sitelink: 'frwi-ki|enwiki&elficwiki' })).throw()
     done()
   })
 })
