@@ -13,6 +13,7 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
   - [By claims](#by-claims)
   - [By sitelinks](#by-sitelinks)
   - [By type](#by-type)
+  - [By something else](#by-something-else)
 - [Format entities](#format-entities)
   - [Filter attributes](#filter-attributes)
   - [Filter languages](#filter-languages)
@@ -79,6 +80,9 @@ cat entities.json | wikidata-filter --type item
 cat entities.json | wikidata-filter --type property
 cat entities.json | wikidata-filter --type both
 ```
+
+### By something else
+Need another kind of filter? Just [ask for it in the issues](https://github.com/maxlath/wikidata-filter/issues), or make a pull request!
 
 ## Format entities
 ### Filter attributes
