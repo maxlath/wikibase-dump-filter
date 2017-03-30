@@ -50,9 +50,21 @@ Of course, **this probably only make sense if the kind of entities you are looki
 ## Filter entities by [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
 Keep only entities with a certain sitelink
 ```sh
-cat entities.json | wikidata-filter --sitelink commonswiki > entities_with_commons_page.ndjson
-cat entities.json | wikidata-filter --sitelink nlwiki > entities_with_a_dutch_wikipedia_article.ndjson
+# entities with a page on Wikimedia Commons
+cat entities.json | wikidata-filter --sitelink commonswiki > subset.ndjson
+# entities with a Dutch Wikipedia article
+cat entities.json | wikidata-filter --sitelink nlwiki > subset.ndjson
+# entities with a Russian Wikipedia articles or Wikiquote article
+cat entities.json | wikidata-filter --sitelink 'ruwiki|ruwikiquote' > subset.ndjson
 ```
+You can even do finer filters by combining conditions with `&` (AND) / `|` (OR).
+```sh
+# entities with Chinese and French Wikipedia articles
+cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki' > subset.ndjson
+# entities with Chinese and French Wikipedia articles, or Chinese and Spanish articles
+cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki|eswiki' > subset.ndjson
+```
+**NB**: `A&B|C` is interpreted as `A AND (B OR C)`
 
 ## Filter entities attributes
 
