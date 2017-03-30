@@ -9,7 +9,8 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
 
 
 - [Installation](#installation)
-- [Filter entities by claim](#filter-entities-by-claim)
+- [Filter entities by claims](#filter-entities-by-claims)
+- [Filter entities by sitelinks](#filter-entities-by-sitelinks)
 - [Filter entities attributes](#filter-entities-attributes)
 - [Options](#options)
 - [Donate](#donate)
@@ -26,7 +27,7 @@ this tool requires to have [NodeJs](http://nodejs.org) installed.
 npm install -g wikidata-filter
 ```
 
-## Filter entities by [claim](https://www.wikidata.org/wiki/Wikidata:Glossary/en#Claims_and_statements)
+## Filter entities by [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
 * **from a local file**
 ```sh
@@ -45,6 +46,13 @@ curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
+
+## Filter entities by [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
+Keep only entities with a certain sitelink
+```sh
+cat entities.json | wikidata-filter --sitelink commonswiki > entities_with_commons_page.ndjson
+cat entities.json | wikidata-filter --sitelink nlwiki > entities_with_a_dutch_wikipedia_article.ndjson
+```
 
 ## Filter entities attributes
 
