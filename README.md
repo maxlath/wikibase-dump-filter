@@ -10,9 +10,9 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
 
 - [Installation](#installation)
 - [Filter entities](#filter-entities)
-  - [by claims](#by-claims)
-  - [by sitelinks](#by-sitelinks)
-  - [by type](#by-type)
+  - [By claims](#by-claims)
+  - [By sitelinks](#by-sitelinks)
+  - [By type](#by-type)
 - [Format entities](#format-entities)
   - [Filter attributes](#filter-attributes)
   - [Filter languages](#filter-languages)
@@ -33,7 +33,7 @@ npm install -g wikidata-filter
 ```
 
 ## Filter entities
-### by [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
+### By [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
 * **from a local file**
 ```sh
@@ -53,7 +53,7 @@ this can be quite convinient when you don't have enough space to keep the whole 
 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
 
-### by [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
+### By [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
 Keep only entities with a certain sitelink
 ```sh
 # entities with a page on Wikimedia Commons
@@ -72,7 +72,7 @@ cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki|eswiki' > subset.n
 ```
 **NB**: `A&B|C` is interpreted as `A AND (B OR C)`
 
-### by [type](https://www.wikidata.org/wiki/Wikidata:Glossary#Entities.2C_items.2C_properties_and_queries)
+### By [type](https://www.wikidata.org/wiki/Wikidata:Glossary#Entities.2C_items.2C_properties_and_queries)
 Default: `item`
 ```sh
 cat entities.json | wikidata-filter --type item
