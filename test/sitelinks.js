@@ -35,4 +35,8 @@ describe('sitelinks', function () {
     should(result).not.be.a.String()
     done()
   })
+  it('should reject invalid sitelinks', function (done) {
+    should(() => wdFilter({ sitelink: 'frwi-ki|enwiki&commonswiki' })).throw()
+    done()
+  })
 })
