@@ -9,9 +9,12 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
 
 
 - [Installation](#installation)
-- [Filter entities by claims](#filter-entities-by-claims)
-- [Filter entities by sitelinks](#filter-entities-by-sitelinks)
-- [Filter entities attributes](#filter-entities-attributes)
+- [Filter entities](#filter-entities)
+  - [by claims](#by-claims)
+  - [by sitelinks](#by-sitelinks)
+  - [by type](#by-type)
+- [Format entities](#format-entities)
+  - [Filter attributes](#filter-attributes)
 - [Options](#options)
 - [Donate](#donate)
 - [See Also](#see-also)
@@ -27,7 +30,8 @@ this tool requires to have [NodeJs](http://nodejs.org) installed.
 npm install -g wikidata-filter
 ```
 
-## Filter entities by [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
+## Filter entities
+### by [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
 * **from a local file**
 ```sh
@@ -47,7 +51,7 @@ this can be quite convinient when you don't have enough space to keep the whole 
 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
 
-## Filter entities by [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
+### by [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
 Keep only entities with a certain sitelink
 ```sh
 # entities with a page on Wikimedia Commons
@@ -66,7 +70,16 @@ cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki|eswiki' > subset.n
 ```
 **NB**: `A&B|C` is interpreted as `A AND (B OR C)`
 
-## Filter entities attributes
+### by [type](https://www.wikidata.org/wiki/Wikidata:Glossary#Entities.2C_items.2C_properties_and_queries)
+Default: `item`
+```sh
+cat entities.json | wikidata-filter --type item
+cat entities.json | wikidata-filter --type property
+cat entities.json | wikidata-filter --type both
+```
+
+## Format entities
+### Filter attributes
 
 Wikidata entities have the following attributes: `id`, `type`, `labels`, `descriptions`, `aliases`, `claims`, `sitelinks`.
 All in all, this whole takes a lot of place and might not be needed in your use case: for instance, if your goal is to do [full text search on a subset of Wikidata](http://github.com/inventaire/inv-elasticsearch), you just need to keep the labels, aliases and descriptions, and you can omit the claims and sitelinks that do take a lot of space.
@@ -79,35 +92,30 @@ cat entities.json | wikidata-filter --claim P31:Q5 --keep id,type,labels,descrip
 ```
 
 ## Options
-
 ```
-  Usage: wikidata-filter [options]
+-h, --help                   output usage information
+-V, --version                output the version number
+-t, --type <type>
+    Specify which entity type should be kept: item, property or both. Defaults to item.
 
-  Options:
+-c, --claim <claim>
+    Specify the claim the entity should have to pass the filter.
 
-    -h, --help                   output usage information
+-i, --sitelink <sitelink>
+    Specify the sitelink the entity should have to pass the filter.
 
-    -V, --version                output the version number
+-o, --omit <attributes>
+    Specify the entities attributes to omit among wikidata entities attributes: type, labels, descriptions, aliases, claims, sitelinks.
 
-    -c, --claim <claim>          Specify the claim the entity should have to pass the filter.
-                                 Example: to keep only entities of humans: `wikidata-filter -c P31:Q5`
+-k, --keep <attributes>
+    The inverse of omit: specify the attributes to keep.
 
-    -o, --omit <attributes>      Specify the entities attributes to omit among wikidata entities attributes:
-                                 type, labels, descriptions, aliases, claims, sitelinks.
-                                 Example: to keep only labels and descriptions: `wikidata-filter -o aliases,claims,sitelink`
+-l, --languages <languages>
+    Specify for which languages labels, descriptions and aliases should be kept.
 
-    -k, --keep <attributes>      The inverse of omit: specify the attributes to keep.
-                                 Example: to keep only labels and descriptions: `wikidata-filter -k labels,descriptions`
-
-    -t, --type <type>            Specify which entity type should be kept: item, property or both.
-                                 Defaults to item.
-
-    -l, --languages <languages>  Specify for which languages labels, descriptions and aliases should be kept.
-
-    -s, --simplified             Flag to simplify claims values.
-                                 Defaults to false.
+-s, --simplified
+    Flag to simplify claims values. Defaults to false.
 ```
-
 
 ## Donate
 
