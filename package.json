@@ -25,7 +25,7 @@
     "lodash.pick": "^4.2.0",
     "split": "^1.0.0",
     "through": "^2.3.8",
-    "wikidata-sdk": "^2.5.0"
+    "wikidata-sdk": "^5.0.0"
   },
   "devDependencies": {
     "doctoc": "^1.2.0",
