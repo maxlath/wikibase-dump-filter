@@ -111,8 +111,8 @@ cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
 
 ## Other options
 ```
--h, --help                   output usage information
--V, --version                output the version number
+-h, --help      output usage information
+-V, --version   output the version number
 ```
 
 ## Donate
