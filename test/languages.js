@@ -25,6 +25,8 @@ describe('languages', function () {
     result.aliases.ca.should.be.ok()
     result.aliases.th.should.be.ok()
     Object.keys(result.aliases).length.should.equal(2)
+    result.sitelinks.eswikivoyage.should.be.ok()
+    Object.keys(result.sitelinks).length.should.equal(10)
     done()
   })
 })

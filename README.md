@@ -98,7 +98,7 @@ cat entities.json | wikidata-filter --keep id,type,labels,descriptions,aliases >
 ```
 
 ### Filter languages
-Keep only the desired languages for labels, descriptions, and aliases
+Keep only the desired languages for labels, descriptions, aliases, and sitelinks.
 ```sh
 cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
 ```
