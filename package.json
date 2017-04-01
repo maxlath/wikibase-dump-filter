@@ -10,7 +10,7 @@
     "test": "mocha",
     "lint": "standard",
     "init-fixtures": "./scripts/init_fixtures",
-    "update-toc": "doctoc README.md"
+    "update-toc": "doctoc README.md docs/*md"
   },
   "keywords": [
     "wikidata",
