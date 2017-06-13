@@ -92,7 +92,7 @@ cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
 ```
 
 ### Simplify entity data
-Use [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk#simplify-entity) to parse the labels, descriptions, aliases, claims, and sitelinks.
+Uses [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk#simplify-entity) to parse the labels, descriptions, aliases, claims, and sitelinks.
 ```sh
 cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
 ```
