@@ -1,11 +1,10 @@
-const split = require('split')
 const program = require('./lib/program')()
+const entityReader = require('./lib/entity_reader')
 const filter = require('./lib/filter')
 const wikidataFilter = require('./lib/wikidata_filter')(program)
 const handleErrors = require('./lib/handle_errors')
 
-process.stdin
-.pipe(split())
+entityReader(process.stdin)
 .pipe(filter(wikidataFilter))
 .pipe(process.stdout)
 .on('error', handleErrors)
