@@ -1,11 +1,19 @@
-const program = require('./lib/program')()
-const entityReader = require('./lib/entity_reader')
-const entityWriter = require('./lib/entity_writer')
-const wikidataFilter = require('./lib/wikidata_filter')(program)
-const handleErrors = require('./lib/handle_errors')
+const entityParser = require('./lib/entity_parser')
+const entitySerializer = require('./lib/entity_serializer')
+const wikidataFilter = require('./lib/wikidata_filter')
 
-entityReader(process.stdin)
-.filter(wikidataFilter)
-.filter(entityWriter)
-.pipe(process.stdout)
-.on('error', handleErrors)
+module.exports = {
+  parser: entityParser,
+  serializer: entitySerializer,
+  filter: wikidataFilter,
+  run: function () {
+    const program = require('./lib/program')()
+    const handleErrors = require('./lib/handle_errors')
+
+    entityParser(process.stdin)
+    .filter(wikidataFilter(program))
+    .filter(entitySerializer)
+    .pipe(process.stdout)
+    .on('error', handleErrors)
+  }
+}

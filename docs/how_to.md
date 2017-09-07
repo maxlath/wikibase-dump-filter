@@ -103,6 +103,31 @@ cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
 -V, --version   output the version number
 ```
 
+## Usage as package
+
+The wikidata-filter package provides helper methods to parse, serialize and filter entities from Wikidata dumps.
+
+```js
+const { parser, serializer, filter } = require('wikidata-filter')
+
+// filter functions must return a (possibly modified) entity or null
+function customFilter (entity) {
+  if (entity.id == 'Q12345') {
+    entity.labels.en = {"language":"en","value":"Count von Count"}
+    return entity
+  }
+}
+
+// build a filter from options documented above
+var configuredFilter = filter({type:'item', languages:'en,fr'})
+
+parser(process.stdin)       // return a stream of entities
+.filter(customFilter )      // filter entity stream
+.filter(configuredFilter)   // filters can be chained
+.filter(serializer)         // serialize entities as newline delimited JSON
+.pipe(process.stdout)
+```
+
 ## Examples
 
 ### Get all entities with a Chinese and a French Wikipedia article, keeping only id, labels, and sitelinks matching those languages
