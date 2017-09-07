@@ -13,7 +13,7 @@ describe('sitelinks', function () {
   })
   it('should return the entity if it has the specified sitelink', function (done) {
     const result = wdFilter({ sitelink: 'frwiki' })(parsedEntity)
-    result.should.be.a.String()
+    result.should.be.a.Object()
     done()
   })
   it("should not return the entity if it doesn't have the sitelink", function (done) {
@@ -23,7 +23,7 @@ describe('sitelinks', function () {
   })
   it('should return the entity if it has one of the possible sitelink', function (done) {
     const result = wdFilter({ sitelink: 'elficwiki|frwiki' })(parsedEntity)
-    result.should.be.a.String()
+    result.should.be.a.Object()
     done()
   })
   it("should not return the entity if it donesn't have one of the required sitelinks", function (done) {
@@ -33,12 +33,12 @@ describe('sitelinks', function () {
   })
   it('should return the entity if it matches all the required groups', function (done) {
     const result = wdFilter({ sitelink: 'elficwiki|frwiki&enwiki' })(parsedEntity)
-    result.should.be.a.String()
+    result.should.be.a.Object()
     done()
   })
   it("should not return the entity if it doesn't match all the required groups", function (done) {
     const result = wdFilter({ sitelink: 'frwiki|enwiki&elficwiki' })(parsedEntity)
-    should(result).not.be.a.String()
+    should(result).not.be.a.Object()
     done()
   })
 })

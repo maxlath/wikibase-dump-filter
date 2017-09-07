@@ -15,17 +15,17 @@ describe('claims', function () {
   describe('positive claim', function () {
     it('should return the entity if it has the specified claim', function (done) {
       const result = wdFilter({ claim: 'P31:Q3336843' })(parsedEntity)
-      result.should.be.a.String()
+      result.should.equal(parsedEntity)
       const result2 = wdFilter({ claim: 'P31' })(parsedEntity)
-      result2.should.be.a.String()
+      result2.should.equal(parsedEntity)
       done()
     })
 
     it('should not return the entity if it miss the specified claim', function (done) {
       const result = wdFilter({ claim: 'P31:Q5' })(parsedEntity)
-      should(result).not.be.ok()
+      should(result).be.null()
       const result2 = wdFilter({ claim: 'P2002' })(parsedEntity)
-      should(result2).not.be.ok()
+      should(result2).be.null()
       done()
     })
   })
@@ -33,17 +33,17 @@ describe('claims', function () {
   describe('negative claim', function () {
     it('should not return the entity if it has the specified claim', function (done) {
       const result = wdFilter({ claim: '~P31:Q3336843' })(parsedEntity)
-      should(result).not.be.ok()
+      should(result).be.null()
       const result2 = wdFilter({ claim: '~P31' })(parsedEntity)
-      should(result2).not.be.ok()
+      should(result2).be.null()
       done()
     })
 
     it('should return the entity if it miss the specified claim', function (done) {
       const result = wdFilter({ claim: '~P31:Q5' })(parsedEntity)
-      should(result).be.ok()
+      should(result).equal(parsedEntity)
       const result2 = wdFilter({ claim: '~P2002' })(parsedEntity)
-      should(result2).be.ok()
+      should(result2).equal(parsedEntity)
       done()
     })
   })

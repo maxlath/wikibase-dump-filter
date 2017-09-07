@@ -15,7 +15,7 @@ describe('attributes', function () {
   describe('keep', function () {
     it('should keep specified attributes, omit the others', function (done) {
       const options = { keep: ['id'] }
-      const result = JSON.parse(wdFilter(options)(parsedEntity))
+      const result = wdFilter(options)(parsedEntity)
       result.id.should.be.ok()
       should(result.type).not.be.ok()
       should(result.aliases).not.be.ok()
@@ -29,7 +29,7 @@ describe('attributes', function () {
   describe('omit', function () {
     it('should omit specified attributes, keep the others', function (done) {
       const options = { omit: ['sitelinks'] }
-      const result = JSON.parse(wdFilter(options)(parsedEntity))
+      const result = wdFilter(options)(parsedEntity)
       result.id.should.be.ok()
       result.type.should.be.ok()
       result.aliases.should.be.ok()

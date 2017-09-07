@@ -12,7 +12,7 @@ describe('languages', function () {
     })
   })
   it('should keep data for the specified languages', function (done) {
-    const result = JSON.parse(wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(parsedEntity))
+    const result = wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(parsedEntity)
     result.labels.es.should.be.ok()
     result.labels.de.should.be.ok()
     result.labels.ca.should.be.ok()
