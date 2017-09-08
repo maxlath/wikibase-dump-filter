@@ -6,4 +6,4 @@
     * Removed the possibility to pass a claim argument as only argument (that is, without the `-c, --claim` prefix)
 
   **New features**:
-    * Added [filter by sitelink](https://github.com/maxlath/wikidata-filter#wd-summary)
+    * Added [filter by sitelink](https://github.com/maxlath/wikidata-filter/blob/master/docs/how_to.md#by-sitelinks)
