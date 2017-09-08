@@ -1,11 +1,19 @@
-const split = require('split')
-const program = require('./lib/program')()
-const filter = require('./lib/filter')
-const wikidataFilter = require('./lib/wikidata_filter')(program)
-const handleErrors = require('./lib/handle_errors')
+const entityParser = require('./lib/entity_parser')
+const entitySerializer = require('./lib/entity_serializer')
+const wikidataFilter = require('./lib/wikidata_filter')
 
-process.stdin
-.pipe(split())
-.pipe(filter(wikidataFilter))
-.pipe(process.stdout)
-.on('error', handleErrors)
+module.exports = {
+  parser: entityParser,
+  serializer: entitySerializer,
+  filter: wikidataFilter,
+  run: function () {
+    const program = require('./lib/program')()
+    const handleErrors = require('./lib/handle_errors')
+
+    entityParser(process.stdin)
+    .filter(wikidataFilter(program))
+    .filter(entitySerializer)
+    .pipe(process.stdout)
+    .on('error', handleErrors)
+  }
+}
