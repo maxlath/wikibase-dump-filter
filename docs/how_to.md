@@ -120,7 +120,7 @@ function customFilter (entity) {
 }
 
 // build a filter from options documented above
-var configuredFilter = filter({ type: 'item', languages: 'en,fr' })
+var configuredFilter = filter({ type: 'item', languages: [ 'en', 'fr' ] })
 
 parser(process.stdin)       // return a stream of entities
 .filter(customFilter )      // filter entity stream
