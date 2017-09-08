@@ -16,6 +16,7 @@
   - [Filter languages](#filter-languages)
   - [Simplify entity data](#simplify-entity-data)
 - [Other options](#other-options)
+- [Usage as package](#usage-as-package)
 - [Examples](#examples)
   - [Get all entities with a Chinese and a French Wikipedia article, keeping only id, labels, and sitelinks matching those languages](#get-all-entities-with-a-chinese-and-a-french-wikipedia-article-keeping-only-id-labels-and-sitelinks-matching-those-languages)
 
@@ -113,13 +114,13 @@ const { parser, serializer, filter } = require('wikidata-filter')
 // filter functions must return a (possibly modified) entity or null
 function customFilter (entity) {
   if (entity.id == 'Q12345') {
-    entity.labels.en = {"language":"en","value":"Count von Count"}
+    entity.labels.en = { language: 'en', value: 'Count von Count' }
     return entity
   }
 }
 
 // build a filter from options documented above
-var configuredFilter = filter({type:'item', languages:'en,fr'})
+var configuredFilter = filter({ type: 'item', languages: 'en,fr' })
 
 parser(process.stdin)       // return a stream of entities
 .filter(customFilter )      // filter entity stream
