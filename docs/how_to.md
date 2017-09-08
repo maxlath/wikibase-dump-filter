@@ -16,7 +16,7 @@
   - [Filter languages](#filter-languages)
   - [Simplify entity data](#simplify-entity-data)
 - [Other options](#other-options)
-- [Usage as package](#usage-as-package)
+- [Usage as module](#usage-as-module)
 - [Examples](#examples)
   - [Get all entities with a Chinese and a French Wikipedia article, keeping only id, labels, and sitelinks matching those languages](#get-all-entities-with-a-chinese-and-a-french-wikipedia-article-keeping-only-id-labels-and-sitelinks-matching-those-languages)
 
@@ -104,9 +104,9 @@ cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
 -V, --version   output the version number
 ```
 
-## Usage as package
+## Usage as module
 
-The wikidata-filter package provides helper methods to parse, serialize and filter entities from Wikidata dumps.
+The wikidata-filter module provides helper methods to parse, serialize and filter entities from Wikidata dumps.
 
 ```js
 const { parser, serializer, filter } = require('wikidata-filter')
