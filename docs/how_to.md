@@ -131,10 +131,13 @@ function customFilter (entity) {
 var configuredFilter = filter({ type: 'item', languages: [ 'en', 'fr' ] })
 
 parser(process.stdin)       // return a stream of entities
-.filter(customFilter)      // filter entity stream
+.filter(customFilter)       // filter entity stream
 .filter(configuredFilter)   // filters can be chained
 .filter(serializer)         // serialize entities as newline delimited JSON
 .pipe(process.stdout)
+
+// directly add a configured filter to a stream of entities
+parser(process.stdin, { simplified: true })
 ```
 
 ## Examples
