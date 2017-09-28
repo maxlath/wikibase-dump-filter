@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
+    "postinstall": "check-node-version --node '>= 6.4.0'",
     "lint": "standard",
     "init-fixtures": "./scripts/init_fixtures",
     "update-toc": "doctoc README.md docs/*md"
@@ -20,6 +21,7 @@
   "author": "maxlath",
   "license": "MIT",
   "dependencies": {
+    "check-node-version": "^2.1.0",
     "commander": "^2.9.0",
     "lodash.difference": "^4.2.0",
     "lodash.pick": "^4.2.0",
@@ -47,5 +49,8 @@
       "it",
       "describe"
     ]
+  },
+  "engines": {
+    "node": ">= 6.4.0"
   }
 }
