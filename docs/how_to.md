@@ -8,6 +8,7 @@
 
 - [Filter entities](#filter-entities)
   - [By claims](#by-claims)
+    - [Long claim option](#long-claim-option)
   - [By sitelinks](#by-sitelinks)
   - [By type](#by-type)
   - [By something else](#by-something-else)
@@ -42,6 +43,13 @@ curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
+
+#### Long claim option
+If [your claim is too long and triggers a `Argument list too long` error](https://github.com/maxlath/wikidata-filter/issues/13), you can pass a file instead:
+```sh
+echo 'P31:Q5,Q6256' > ./claim
+cat entities.json | wikidata-filter --claim ./claim > humans_and_countries.ndjson
+```
 
 ### By [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
 Keep only entities with a certain sitelink
