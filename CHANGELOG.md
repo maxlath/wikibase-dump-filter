@@ -1,6 +1,9 @@
 # CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
+## 2.3.0 - 2018-05-03
+* [Simplify creation of a filtered stream](https://github.com/maxlath/wikidata-filter/blob/master/docs/how_to.md#usage-as-module)
+
 ## 2.2.0 - 2018-05-03
 * Added support for [long claim arguments](https://github.com/maxlath/wikidata-filter/blob/master/docs/how_to.md#long-claim-option)
 
