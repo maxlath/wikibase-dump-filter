@@ -118,26 +118,41 @@ The wikidata-filter module provides helper methods to parse, serialize and filte
 
 ```js
 const { parser, serializer, filter } = require('wikidata-filter')
+```
 
-// filter functions must return a (possibly modified) entity or null
-function customFilter (entity) {
+Chain filter functions
+```js
+# Filter functions must return a (possibly modified) entity, or undefined or null
+# to filter-out the entity
+const fixEntities = entity => {
   if (entity.id == 'Q12345') {
     entity.labels.en = { language: 'en', value: 'Count von Count' }
-    return entity
   }
+  return entity
 }
 
-// build a filter from options documented above
-var configuredFilter = filter({ type: 'item', languages: [ 'en', 'fr' ] })
+// Build a filter from options documented above
+var langFilter = filter({ type: 'item', languages: [ 'en', 'fr' ] })
 
-parser(process.stdin)       // return a stream of entities
-.filter(customFilter)       // filter entity stream
-.filter(configuredFilter)   // filters can be chained
-.filter(serializer)         // serialize entities as newline delimited JSON
+// return a stream of entities
+parser(process.stdin)
+// filter entity stream
+.filter(fixEntities)
+// filters can be chained
+.filter(langFilter)
+// serialize entities as newline delimited JSON
+.filter(serializer)
 .pipe(process.stdout)
+```
 
-// directly add a configured filter to a stream of entities
-parser(process.stdin, { simplified: true })
+or directly add a configured filter to a stream of entities
+```js
+parser(process.stdin, {
+  type: 'item',
+  keep: [ 'labels', 'claims' ]
+  simplified: true,
+  languages: [ 'zh', 'fr' ]
+})
 ```
 
 ## Examples
