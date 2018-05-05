@@ -81,6 +81,24 @@ cat entities.json | wikidata-filter --type both
 ### By something else
 Need another kind of filter? Just [ask for it in the issues](https://github.com/maxlath/wikidata-filter/issues), or make a pull request!
 
+
+### Parallelize
+If your hardware happens to have several cores, we can do better:
+* replace `gzip` by [`pigz`](https://zlib.net/pigz/)
+* load balance lines over several `wikidata-filter` processes using [`load-balance-lines`](https://github.com/maxlath/load-balance-lines) or something that does the same job
+
+```sh
+# install those new dependencies
+sudo apt-get install pigz
+npm install --global load-balance-lines
+
+wget --continue https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz
+nice -n+19 pigz -d < latest-all.json.gz | nice -n+19 load-balance-lines wikidata-filter --claim P31:Q5 > humans.ndjson
+```
+
+Using [`nice`](http://man7.org/linux/man-pages/man1/nice.1.html) to tell the system that those processes, while eager to eat all the CPUs, should have the lowest priority.
+If you are not familiar with the `<` operator, it's the equivalent of `cat latest-all.json.gz | nice -n+19 pigz -d` but in a shell built-in way. (See [I/O Redirection doc](http://www.tldp.org/LDP/abs/html/io-redirection.html))
+
 ## Format entities
 ### Filter attributes
 
