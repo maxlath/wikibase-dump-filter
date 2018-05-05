@@ -12,6 +12,7 @@
   - [By sitelinks](#by-sitelinks)
   - [By type](#by-type)
   - [By something else](#by-something-else)
+  - [Parallelize](#parallelize)
 - [Format entities](#format-entities)
   - [Filter attributes](#filter-attributes)
   - [Filter languages](#filter-languages)
