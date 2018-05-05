@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+doctoc README.md docs/*md
+sed -i 's/#how-to/docs\/how_to\.md/' README.md

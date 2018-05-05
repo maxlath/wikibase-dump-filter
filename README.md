@@ -17,7 +17,7 @@ Filter a line-delimited json of Wikidata entities (typically a [dump](https://ww
 
 
 - [Install](#install)
-- [How-to](#how-to)
+- [How-to](docs/how_to.md)
 - [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)

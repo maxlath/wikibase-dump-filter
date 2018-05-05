@@ -11,7 +11,7 @@
     "postinstall": "check-node-version --node '>= 6.4.0'",
     "lint": "standard",
     "init-fixtures": "./scripts/init_fixtures",
-    "update-toc": "doctoc README.md docs/*md",
+    "update-toc": "./scripts/update_toc",
     "prepublishOnly": "npm run lint && npm test"
   },
   "keywords": [
