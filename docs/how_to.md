@@ -93,6 +93,9 @@ If your hardware happens to have several cores, we can do better:
 sudo apt-get install pigz
 npm install --global load-balance-lines
 
+# increase the max RAM available to node processes, to prevent allocation errors
+NODE_OPTIONS=--max_old_space_size=4096
+
 wget --continue https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz
 nice -n+19 pigz -d < latest-all.json.gz | nice -n+19 load-balance-lines wikidata-filter --claim P31:Q5 > humans.ndjson
 ```
