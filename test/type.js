@@ -1,8 +1,7 @@
 const should = require('should')
-const fs = require('fs')
-
 const wdFilter = require('../lib/wikidata_filter')
-const parsedEntity = JSON.parse(fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' }))
+const { getEntity } = require('./utils')
+const entity = getEntity()
 
 describe('type', () => {
   describe('validation', () => {
@@ -12,11 +11,11 @@ describe('type', () => {
     })
   })
   it('should keep entities of the specified type', done => {
-    const result = wdFilter({ type: 'item' })(parsedEntity)
+    const result = wdFilter({ type: 'item' })(entity)
     should(result).be.ok()
-    const result2 = wdFilter({ type: 'property' })(parsedEntity)
+    const result2 = wdFilter({ type: 'property' })(entity)
     should(result2).not.be.ok()
-    const result3 = wdFilter({ type: 'both' })(parsedEntity)
+    const result3 = wdFilter({ type: 'both' })(entity)
     should(result3).be.ok()
     done()
   })

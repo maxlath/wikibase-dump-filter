@@ -1,6 +1,5 @@
 require('should')
 const { parser } = require('../index.js')
-
 const fs = require('fs')
 
 describe('parser', () => {
@@ -10,7 +9,7 @@ describe('parser', () => {
   })
   it('should parse with filter', (done) => {
     var simplifiedValue
-    var stream = fs.createReadStream('./test/fixtures/entity', { encoding: 'utf-8' })
+    var stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
 
     stream.on('close', () => {
       simplifiedValue.should.equal('Q3336843')
@@ -18,7 +17,7 @@ describe('parser', () => {
     })
 
     parser(stream, { simplified: true })
-    .filter((entity) => {
+    .filter(entity => {
       simplifiedValue = entity.claims.P31[0]
     })
   })

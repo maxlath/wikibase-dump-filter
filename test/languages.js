@@ -1,8 +1,7 @@
 const should = require('should')
-const fs = require('fs')
-
 const wdFilter = require('../lib/wikidata_filter')
-const parsedEntity = JSON.parse(fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' }))
+const { getEntity } = require('./utils')
+const entity = getEntity()
 
 describe('languages', () => {
   describe('validation', () => {
@@ -12,7 +11,7 @@ describe('languages', () => {
     })
   })
   it('should keep data for the specified languages', done => {
-    const result = wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(parsedEntity)
+    const result = wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(entity)
     result.labels.es.should.be.ok()
     result.labels.de.should.be.ok()
     result.labels.ca.should.be.ok()
