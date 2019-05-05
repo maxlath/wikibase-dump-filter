@@ -4,16 +4,16 @@ const fs = require('fs')
 const wdFilter = require('../lib/wikidata_filter')
 const parsedEntity = JSON.parse(fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' }))
 
-describe('attributes', function () {
-  describe('validation', function () {
-    it('should reject an invalid attribute', function (done) {
+describe('attributes', () => {
+  describe('validation', () => {
+    it('should reject an invalid attribute', done => {
       should(() => wdFilter({ keep: ['bulgroz'] })).throw()
       done()
     })
   })
 
-  describe('keep', function () {
-    it('should keep specified attributes, omit the others', function (done) {
+  describe('keep', () => {
+    it('should keep specified attributes, omit the others', done => {
       const options = { keep: ['id'] }
       const result = wdFilter(options)(parsedEntity)
       result.id.should.be.ok()
@@ -26,8 +26,8 @@ describe('attributes', function () {
     })
   })
 
-  describe('omit', function () {
-    it('should omit specified attributes, keep the others', function (done) {
+  describe('omit', () => {
+    it('should omit specified attributes, keep the others', done => {
       const options = { omit: ['sitelinks'] }
       const result = wdFilter(options)(parsedEntity)
       result.id.should.be.ok()

@@ -6,20 +6,21 @@ const parsedEntity = () => {
   return JSON.parse(fs.readFileSync('./test/fixtures/entity', { encoding: 'utf-8' }))
 }
 
-describe('simplified', function () {
-  describe('validation', function () {
-    it('should reject an invalid boolean', function (done) {
+describe('simplified', () => {
+  describe('validation', () => {
+    it('should reject an invalid boolean', done => {
       should(() => wdFilter({ simplified: 'bulgroz' })).throw()
       done()
     })
   })
-  it('should simplify claims if true', function (done) {
+
+  it('should simplified claims if true', done => {
     const result = wdFilter({ simplified: true })(parsedEntity())
     result.claims.P31[0].should.equal('Q3336843')
     done()
   })
 
-  it('should not simplify claims if false', function (done) {
+  it('should not simplified claims if false', done => {
     const result = wdFilter({ simplified: false })(parsedEntity())
     result.claims.P31[0].should.be.an.Object()
 
