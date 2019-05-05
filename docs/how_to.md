@@ -131,9 +131,16 @@ cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
 ```
 
 ### Simplify entity data
-Uses [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk#simplify-entity) to parse the labels, descriptions, aliases, claims, and sitelinks.
+Uses [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md) to parse the labels, descriptions, aliases, claims, and sitelinks.
 ```sh
-cat entities.json | wikidata-filter --simplified > simplified_dump.ndjson
+# Default simplify options
+cat entities.json | wikidata-filter --simplify > simplified_dump.ndjson
+# Custom options, see wdk.simplify.entity documentation https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md
+# and specifically for claims options, see https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_claims.md#options
+cat entities.json | wikidata-filter --simplify '{"keepRichValues":"true","keepQualifiers":"true","keepReferences":"true"}' > simplified_dump.ndjson
+# The options can also be passed in a lighter, urlencoded-like, key=value format
+# that's simpler than typing all those JSON double quotes
+cat entities.json | wikidata-filter --simplify 'keepRichValues=true&keepQualifiers=true&keepReferences=true' > simplified_dump.ndjson
 ```
 
 ## Other options
@@ -194,5 +201,5 @@ The [equivalent SPARQL query](https://query.wikidata.org/#SELECT%20%3Fs%20%3FsLa
 
 ```sh
 DUMP='https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz'
-curl $DUMP | gzip -d | wikidata-filter --sitelink 'zhwiki&frwiki' --keep id,labels,sitelinks --languages zh,fr --simplified > subset.ndjson
+curl $DUMP | gzip -d | wikidata-filter --sitelink 'zhwiki&frwiki' --keep id,labels,sitelinks --languages zh,fr --simplify > subset.ndjson
 ```
