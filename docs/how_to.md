@@ -8,6 +8,7 @@
 
 - [Filter entities](#filter-entities)
   - [By claims](#by-claims)
+    - [claims logical operators](#claims-logical-operators)
     - [Long claim option](#long-claim-option)
   - [By sitelinks](#by-sitelinks)
   - [By type](#by-type)
@@ -44,6 +45,13 @@ curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
+
+#### claims logical operators
+You can use logical operators:
+```sh
+// the claim filter is equivalent to (P31:Q571 && (P50 || P110))
+cat entities.json | wikidata-filter --claim 'P31:Q571&P50|P110' > books_with_an_author_or_an_illustrator.ndjson
+```
 
 #### Long claim option
 If [your claim is too long and triggers a `Argument list too long` error](https://github.com/maxlath/wikidata-filter/issues/13), you can pass a file instead:

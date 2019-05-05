@@ -47,4 +47,44 @@ describe('claims', function () {
       done()
     })
   })
+
+  describe('disjonctive claims', function () {
+    it('should return the entity if it has one of the specified claim', function (done) {
+      const result = wdFilter({ claim: 'P31:Q571|P300' })(parsedEntity)
+      should(result).equal(parsedEntity)
+      done()
+    })
+
+    it('should support multiple claim values', function (done) {
+      const result = wdFilter({ claim: 'P6214214|P31:Q571,Q3336843' })(parsedEntity)
+      should(result).equal(parsedEntity)
+      done()
+    })
+
+    it('should support negative claims', function (done) {
+      const result = wdFilter({ claim: '~P31|~P2002' })(parsedEntity)
+      should(result).equal(parsedEntity)
+      done()
+    })
+  })
+
+  describe('conjonctive claims', function () {
+    it("should not return the entity if it doesn't have all the specified claim", function (done) {
+      const result = wdFilter({ claim: 'P31:Q571&P300' })(parsedEntity)
+      should(result).be.null()
+      done()
+    })
+
+    it('should return the entity if it has all the specified claim', function (done) {
+      const result = wdFilter({ claim: 'P31:Q3336843&P300' })(parsedEntity)
+      should(result).equal(parsedEntity)
+      done()
+    })
+
+    it('should support negative claims', function (done) {
+      const result = wdFilter({ claim: 'P31:Q3336843&P300&~P2002' })(parsedEntity)
+      should(result).equal(parsedEntity)
+      done()
+    })
+  })
 })

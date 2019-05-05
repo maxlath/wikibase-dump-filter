@@ -25,7 +25,9 @@
     "check-node-version": "^2.1.0",
     "commander": "^2.9.0",
     "lodash.difference": "^4.2.0",
+    "lodash.every": "^4.6.0",
     "lodash.pick": "^4.2.0",
+    "lodash.some": "^4.6.0",
     "split": "^1.0.0",
     "through": "^2.3.8",
     "wikidata-sdk": "^5.1.0"
