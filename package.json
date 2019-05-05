@@ -26,12 +26,13 @@
     "commander": "^2.9.0",
     "lodash.difference": "^4.2.0",
     "lodash.every": "^4.6.0",
+    "lodash.isplainobject": "^4.0.6",
     "lodash.pick": "^4.2.0",
     "lodash.some": "^4.6.0",
     "lodash.throttle": "^4.1.1",
     "split": "^1.0.0",
     "through": "^2.3.8",
-    "wikidata-sdk": "^5.1.0"
+    "wikidata-sdk": "^6.4.0"
   },
   "devDependencies": {
     "doctoc": "^1.2.0",

@@ -16,7 +16,7 @@ describe('parser', () => {
       done()
     })
 
-    parser(stream, { simplified: true })
+    parser(stream, { simplify: true })
     .filter(entity => {
       simplifiedValue = entity.claims.P31[0]
     })
