@@ -47,10 +47,26 @@ this can be quite convinient when you don't have enough space to keep the whole 
 Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
 
 #### claims logical operators
-You can use logical operators:
+**and**
 ```sh
-// the claim filter is equivalent to (P31:Q571 && (P50 || P110))
+# operator: &
+cat entities.json | wikidata-filter --claim 'P31:Q571&P50' > books_with_an_author.ndjson
+```
+
+**or**
+```sh
+# operator: |
+cat entities.json | wikidata-filter --claim 'P31:Q146|P31:Q144' > cats_and_dogs.ndjson
+
+# the 'or' operator has priority on the 'and' operator:
+# this claim filter is equivalent to (P31:Q571 && (P50 || P110))
 cat entities.json | wikidata-filter --claim 'P31:Q571&P50|P110' > books_with_an_author_or_an_illustrator.ndjson
+```
+
+**not**
+```sh
+# operator: ~
+cat entities.json | wikidata-filter --claim 'P31:Q571|~P50' > books_without_author.ndjson
 ```
 
 #### Long claim option
