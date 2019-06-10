@@ -30,6 +30,7 @@
     "lodash.pick": "^4.2.0",
     "lodash.some": "^4.6.0",
     "lodash.throttle": "^4.1.1",
+    "simdjson": "0.0.5",
     "split": "^1.0.0",
     "through": "^2.3.8",
     "wikidata-sdk": "^6.4.0"
