@@ -6,6 +6,7 @@
   "bin": {
     "wikidata-filter": "bin/wikidata-filter"
   },
+  "files": [ "lib", "scripts", "docs" ],
   "scripts": {
     "test": "mocha",
     "lint": "standard",
