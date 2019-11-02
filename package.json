@@ -38,7 +38,7 @@
     "wikidata-sdk": "^6.4.0"
   },
   "devDependencies": {
-    "doctoc": "^1.2.0",
+    "doctoc": "^1.4.0",
     "git-hooks": "^1.1.7",
     "mocha": "^3.2.0",
     "should": "^11.1.2",
