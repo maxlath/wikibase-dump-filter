@@ -16,7 +16,8 @@
     "lint": "standard",
     "init-fixtures": "./scripts/init_fixtures",
     "update-toc": "./scripts/update_toc",
-    "prepublishOnly": "npm run lint && npm test"
+    "prepublishOnly": "npm run lint && npm test",
+    "postpublish": "git push --tags"
   },
   "keywords": [
     "wikidata",
