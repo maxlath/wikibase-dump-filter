@@ -1,12 +1,12 @@
 const should = require('should')
-const wdFilter = require('../lib/wikidata_filter')
+const formatEntity = require('../lib/format_entity')
 const { getEntity } = require('./utils')
 const entity = getEntity()
 
 describe('attributes', () => {
   describe('validation', () => {
     it('should reject an invalid attribute', done => {
-      should(() => wdFilter({ keep: ['bulgroz'] })).throw()
+      should(() => formatEntity({ keep: ['bulgroz'] })).throw()
       done()
     })
   })
@@ -14,7 +14,7 @@ describe('attributes', () => {
   describe('keep', () => {
     it('should keep specified attributes, omit the others', done => {
       const options = { keep: ['id'] }
-      const result = wdFilter(options)(entity)
+      const result = formatEntity(options)(entity)
       result.id.should.be.ok()
       should(result.type).not.be.ok()
       should(result.aliases).not.be.ok()
@@ -28,7 +28,7 @@ describe('attributes', () => {
   describe('omit', () => {
     it('should omit specified attributes, keep the others', done => {
       const options = { omit: ['sitelinks'] }
-      const result = wdFilter(options)(entity)
+      const result = formatEntity(options)(entity)
       result.id.should.be.ok()
       result.type.should.be.ok()
       result.aliases.should.be.ok()

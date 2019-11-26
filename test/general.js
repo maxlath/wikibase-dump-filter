@@ -1,9 +1,19 @@
 require('should')
-const wdFilter = require('../lib/wikidata_filter')
+const formatEntity = require('../lib/filter_entity')
+const filterEntity = require('../lib/format_entity')
 
 describe('general', () => {
-  it('should return a function', done => {
-    wdFilter({}).should.be.a.Function()
-    done()
+  describe('format entity', () => {
+    it('should return a function', done => {
+      formatEntity({}).should.be.a.Function()
+      done()
+    })
+  })
+
+  describe('filter entity', () => {
+    it('should return a function', done => {
+      filterEntity({}).should.be.a.Function()
+      done()
+    })
   })
 })

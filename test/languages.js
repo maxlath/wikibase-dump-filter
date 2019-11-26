@@ -1,17 +1,17 @@
 const should = require('should')
-const wdFilter = require('../lib/wikidata_filter')
+const formatEntity = require('../lib/format_entity')
 const { getEntity } = require('./utils')
 const entity = getEntity()
 
 describe('languages', () => {
   describe('validation', () => {
     it('should reject an invalid language', done => {
-      should(() => wdFilter({ languages: 'zzzzz' })).throw()
+      should(() => formatEntity({ languages: 'zzzzz' })).throw()
       done()
     })
   })
   it('should keep data for the specified languages', done => {
-    const result = wdFilter({ languages: ['es', 'de', 'ca', 'th'] })(entity)
+    const result = formatEntity({ languages: ['es', 'de', 'ca', 'th'] })(entity)
     result.labels.es.should.be.ok()
     result.labels.de.should.be.ok()
     result.labels.ca.should.be.ok()
