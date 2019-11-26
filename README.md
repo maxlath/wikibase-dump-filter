@@ -1,6 +1,8 @@
 # Wikidata filter
 
-Filter a line-delimited json of Wikidata entities (typically a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)) into a subset of entities sharing the specified claim.
+Filter and format a newline-delimited JSON stream of Wikidata entities
+
+Typically useful to create a formatted subset of a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)).
 
 This project is [funded by a Wikimedia Project Grant](https://meta.wikimedia.org/wiki/Grants:Project/WikidataJS).
 
@@ -20,6 +22,8 @@ This project is [funded by a Wikimedia Project Grant](https://meta.wikimedia.org
 
 - [Install](#install)
 - [How-to](docs/how_to.md)
+  - [CLI](docs/cli.md)
+  - [module](docs/module.md)
 - [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)
@@ -35,7 +39,9 @@ npm install -g wikidata-filter
 ```
 
 ## How-to
-See [How-to](docs/how_to.md)
+See [How-to](docs/how_to.md):
+### [CLI](docs/cli.md)
+### [module](docs/module.md)
 
 ## Donate
 
