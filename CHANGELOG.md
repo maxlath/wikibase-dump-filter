@@ -1,8 +1,24 @@
 # CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
+## 4.0.0 - 2019-11-26
+### BREAKING CHANGES
+
+Rewrote the [module interface](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md). Convert your code from `v3` to `v4`:
+* `parse` -> `parseEntitiesStream`
+* `filter` -> `filterFormatAndSerialize`
+* `serializer` -> `serialize`
+* stream method `filter` -> `filterAndMap`
+
+### New features
+* CLI
+  * Added [`--quiet` option](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#other-options)
+* NodeJS module
+  * get access to more internal helpers: `getEntitiesStream`, `buildFilter`, `buildFormatter`
+  * streams returned by `getEntitiesStream` have new methods: `filter`, `map`, `tap`
+
 ## 3.0.0 - 2019-05-05
-**BREAKING CHANGE**
+### BREAKING CHANGES
 * [The `--simplified` option was renamed `--simplify` and accepts options as JSON or key=value](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#simplify-entity-data) ([`64ab6ce`](https://github.com/maxlath/wikidata-filter/commit/64ab6ce), [`54af4ad`](https://github.com/maxlath/wikidata-filter/commit/54af4ad))
 
 ## 2.4.0 - 2019-05-05
@@ -10,7 +26,7 @@
 * Added progress bar ([`2692f3b`](https://github.com/maxlath/wikidata-filter/commit/2692f3b))
 
 ## 2.3.0 - 2018-05-03
-* [Simplify creation of a filtered stream](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#usage-as-module)
+* [Simplify creation of a filtered stream](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md)
 
 ## 2.2.0 - 2018-05-03
 * Added support for [long claim arguments](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#long-claim-option)
@@ -19,8 +35,8 @@
 * Added the possibility to [use wikidata-filter as module](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md)
 
 ## 2.0.0 - 2017-03-30
-**BREAKING CHANGE**
+### BREAKING CHANGES
 * Removed the possibility to pass a claim argument as only argument (that is, without the `-c, --claim` prefix)
 
-**Added Features**
+### New features
 * Added [filter by sitelink](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#by-sitelinks)
