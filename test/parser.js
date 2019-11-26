@@ -13,7 +13,7 @@ describe('get entities stream', () => {
     const entitiesStream = getEntitiesStream(stream)
     entitiesStream.map.should.be.a.Function()
     entitiesStream.filter.should.be.a.Function()
-    entitiesStream.mapAndFilter.should.be.a.Function()
+    entitiesStream.filterAndMap.should.be.a.Function()
     entitiesStream.tap.should.be.a.Function()
     done()
   })
@@ -58,13 +58,13 @@ describe('get entities stream', () => {
     })
   })
 
-  describe('mapAndFilter', () => {
+  describe('filterAndMap', () => {
     it('should keep and format entities passing the test', done => {
       const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
-      .mapAndFilter(entity => {
+      .filterAndMap(entity => {
         if (entity.id === 'Q22') return entity.id
       })
       .map(id => {
@@ -78,7 +78,7 @@ describe('get entities stream', () => {
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
-      .mapAndFilter(entity => {
+      .filterAndMap(entity => {
         if (entity.id !== 'Q22') return entity.id
       })
       .map(entity => {

@@ -29,6 +29,6 @@ const progress = options.progress !== 'false' && (isntTTY || options.progress ==
 if (progress) Object.assign(options, progressBarHooks)
 
 getEntitiesStream(process.stdin)
-.mapAndFilter(filterFormatAndSerializeEntity(options))
+.filterAndMap(filterFormatAndSerializeEntity(options))
 .pipe(process.stdout)
 .on('error', handleErrors)
