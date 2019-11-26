@@ -6,7 +6,7 @@ module.exports = {
   parser: entityParser,
   serializer: entitySerializer,
   filter: wikidataFilter,
-  run: function () {
+  run: () => {
     const program = require('./lib/program')()
     const handleErrors = require('./lib/handle_errors')
 
