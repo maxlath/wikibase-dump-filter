@@ -2,7 +2,7 @@
   "name": "wikidata-filter",
   "version": "3.0.3",
   "description": "Filter a line-delimited json of Wikidata entities (typically a dump) into a subset of entities sharing the specified claim.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "wikidata-filter": "bin/wikidata-filter"
   },

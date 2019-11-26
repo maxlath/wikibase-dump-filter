@@ -1,5 +1,5 @@
 require('should')
-const { parser } = require('../index.js')
+const { parser } = require('../lib/index.js')
 const fs = require('fs')
 
 describe('parser', () => {

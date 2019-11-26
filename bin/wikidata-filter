@@ -1,3 +1,30 @@
 #!/usr/bin/env node
-var path = require('path')
-require(path.join(__dirname, '..', 'index.js')).run()
+const program = require('commander')
+const package = require('../package.json')
+const entityParser = require('../lib/entity_parser')
+const wikidataFilter = require('../lib/wikidata_filter')
+const entitySerializer = require('../lib/entity_serializer')
+const handleErrors = require('../lib/handle_errors')
+const help = require('../lib/help')
+const list = val => val.split(',')
+
+const options = program
+  .version(package.version)
+  // filters
+  .option('-t, --type <type>', help.type)
+  .option('-c, --claim <claim>', help.claim)
+  .option('-i, --sitelink <sitelink>', help.sitelink)
+  // formatters
+  .option('-o, --omit <attributes>', help.omit, list)
+  .option('-k, --keep <attributes>', help.keep, list)
+  .option('-l, --languages <languages>', help.languages, list)
+  .option('-s, --simplify [boolean|options]', help.simplify)
+  // misc
+  .option('-p, --progress', help.progress)
+  .parse(process.argv)
+
+entityParser(process.stdin)
+.filter(wikidataFilter(options))
+.filter(entitySerializer)
+.pipe(process.stdout)
+.on('error', handleErrors)
