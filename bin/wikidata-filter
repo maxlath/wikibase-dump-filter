@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 const program = require('commander')
 const package = require('../package.json')
-const getEntitiesStream = require('../lib/get_entities_stream')
-const filterEntity = require('../lib/filter_entity')
-const formatEntity = require('../lib/format_entity')
-const serializeEntity = require('../lib/serialize_entity')
-const handleErrors = require('../lib/handle_errors')
-const progressBar = require('../lib/progress_bar')
 const help = require('../lib/help')
 const list = val => val.split(',')
+
+const getEntitiesStream = require('../lib/get_entities_stream')
+const filterFormatAndSerializeEntity = require('../lib/filter_format_and_serialize_entity')
+const progressBarHooks = require('../lib/progress_bar_hooks')
+const handleErrors = require('../lib/handle_errors')
 
 const options = program
   .version(package.version)
@@ -27,20 +26,9 @@ const options = program
 
 const isntTTY = process.stdout.isTTY == null
 const progress = options.progress !== 'false' && (isntTTY || options.progress === 'true')
-
-var total = 0
-var filtered = 0
-const incrementTotal = () => total++
-const updateProgressBar = entity => {
-  filtered++
-  if (progress) progressBar(entity.id, filtered, total)
-}
+if (progress) Object.assign(options, progressBarHooks)
 
 getEntitiesStream(process.stdin)
-.tap(incrementTotal)
-.filter(filterEntity(options))
-.map(formatEntity(options))
-.tap(updateProgressBar)
-.map(serializeEntity)
+.mapAndFilter(filterFormatAndSerializeEntity(options))
 .pipe(process.stdout)
 .on('error', handleErrors)
