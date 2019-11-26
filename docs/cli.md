@@ -162,7 +162,8 @@ cat entities.json | wikidata-filter --simplify 'keepRichValues=true&keepQualifie
 ## Other options
 ```
 -h, --help                     output usage information
--p, --progress <true|false>    enable or disable the progress bar (Defaults to 'false' when stdout is a terminal, 'true' otherwise)
+-p, --progress                 enable the progress bar
+-q, --quiet                    disable the progress bar
 -V, --version                  output the version number
 ```
 

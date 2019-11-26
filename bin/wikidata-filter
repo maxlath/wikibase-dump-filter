@@ -22,10 +22,16 @@ const options = program
   .option('-s, --simplify [boolean|options]', help.simplify)
   // misc
   .option('-p, --progress', help.progress)
+  .option('-q, --quiet', help.quiet)
   .parse(process.argv)
 
-const isntTTY = process.stdout.isTTY == null
-const progress = options.progress !== 'false' && (isntTTY || options.progress === 'true')
+let progress
+if (process.stdout.isTTY) {
+  progress = options.progress && !options.quiet
+} else {
+  progress = !options.quiet
+}
+
 if (progress) Object.assign(options, progressBarHooks)
 
 getEntitiesStream(process.stdin)
