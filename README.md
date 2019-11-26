@@ -4,6 +4,8 @@ Filter and format a newline-delimited JSON stream of Wikidata entities
 
 Typically useful to create a formatted subset of a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)).
 
+While this tool is named `wikidata-filter`, it can actually be used for any Wikibase instance.
+
 This project is [funded by a Wikimedia Project Grant](https://meta.wikimedia.org/wiki/Grants:Project/WikidataJS).
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
