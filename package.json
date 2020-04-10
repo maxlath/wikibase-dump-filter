@@ -39,7 +39,7 @@
     "lodash.throttle": "^4.1.1",
     "split": "^1.0.0",
     "through": "^2.3.8",
-    "wikidata-sdk": "^7.2.0"
+    "wikidata-sdk": "^7.3.1"
   },
   "devDependencies": {
     "git-hooks": "^1.1.7",
