@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "git-hooks": "^1.1.7",
-    "mocha": "^6.2.2",
-    "should": "^11.1.2",
+    "mocha": "^7.1.1",
+    "should": "^13.2.3",
     "standard": "^8.6.0"
   },
   "repository": {
