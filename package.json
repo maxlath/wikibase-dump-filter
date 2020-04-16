@@ -63,5 +63,10 @@
   },
   "engines": {
     "node": ">= 6.4.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
   }
 }
