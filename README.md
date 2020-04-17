@@ -31,6 +31,7 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 
 
 - [Install](#install)
+- [Changelog](#changelog)
 - [Download dump](#download-dump)
   - [Wikidata dumps](#wikidata-dumps)
   - [Your own Wikibase instance dump](#your-own-wikibase-instance-dump)
@@ -51,6 +52,9 @@ npm install -g wikibase-dump-filter
 # Or install just to be used in the scripts of the current project
 npm install wikibase-dump-filter
 ```
+
+## Changelog
+See [CHANGELOG.md](CHANGELOG.md) for version info
 
 ## Download dump
 
