@@ -1,12 +1,12 @@
-# wikidata-filter
+# wikibase-dump-filter
 
-Filter and format a newline-delimited JSON stream of Wikidata entities
+**Filter and format a [newline-delimited JSON](https://en.wikipedia.org/wiki/NDJSON) stream of Wikibase entities.**
 
-Typically useful to create a formatted subset of a [dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29)).
+Typically useful to create a formatted subset of a Wikibase JSON dump. See [Wikidata dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29).
 
-While this tool is named `wikidata-filter`, it can actually be used for any Wikibase instance.
+**Some context**: This tool was formerly known as `wikidata-filter`. [Wikidata](https://en.wikipedia.org/wiki/Wikidata) is an instance of [Wikibase](https://en.wikipedia.org/wiki/Wikibase). This tool was primarly designed with Wikidata in mind, but should be usable for any Wikibase instance.
 
-This project is [funded by a Wikimedia Project Grant](https://meta.wikimedia.org/wiki/Grants:Project/WikidataJS).
+This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wiki/Grants:Project/WikidataJS).
 
 <div align="center">
   <br>
@@ -45,19 +45,22 @@ This project is [funded by a Wikimedia Project Grant](https://meta.wikimedia.org
 this tool requires to have [NodeJs](http://nodejs.org) installed.
 
 ```sh
-npm install -g wikidata-filter
+# Install globally
+npm install -g wikibase-dump-filter
+# Or install just to be used in the scripts of the current project
+npm install wikibase-dump-filter
 ```
 
 ## How-to
-See [How-to](docs/how_to.md):
-### [CLI](docs/cli.md)
-### [module](docs/module.md)
+* [CLI documentation](docs/cli.md)
+* [module documentation](docs/module.md)
 
 ## Donate
 
 We are developing and maintaining tools to work with Wikidata from NodeJS, the browser, or simply the command line, with quality and ease of use at heart. Any donation will be interpreted as a "please keep going, your work is very much needed and awesome. PS: love". [Donate](https://liberapay.com/WikidataJS)
 
 ## See Also
+* [wikibase-dump-formatter](https://github.com/maxlath/wikibase-dump-formatter): Extends Wikibase dump prefixed URIs with a custom domain.
 * [wikibase-cli](https://www.npmjs.com/package/wikibase-cli): The command-line interface to Wikibase
 * [wikibase-sdk](https://www.npmjs.com/package/wikibase-sdk): A javascript tool suite to query and work with Wikibase data
 * [wikibase-edit](https://www.npmjs.com/package/wikibase-edit): Edit Wikibase from NodeJS, used in wikidata-cli for all [write operations](#write-operations)

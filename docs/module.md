@@ -12,13 +12,13 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-The wikidata-filter module provides helper methods to parse, map, filter, and serialize entities from Wikibase JSON dumps.
+The wikibase-dump-filter module exposes the functions used internally by the [CLI](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md) to parse, map, filter, and serialize entities from a Wikibase JSON dumps. This should allow to write more custom filters without having to start from scratch.
 
 ### parseEntitiesStream
 The all-in-one helper
 
 ```js
-const { parseEntitiesStream } = require('wikidata-filter')
+const { parseEntitiesStream } = require('wikibase-dump-filter')
 const options = {
   type: 'item',
   keep: [ 'labels', 'claims' ]
@@ -32,7 +32,7 @@ parseEntitiesStream(process.stdin, options)
 ### custom parsers
 The same behavior can be implemented by using the underlying helpers:
 ```js
-const { getEntitiesStream, buildFilter, buildFormatter, serialize } = require('wikidata-filter')
+const { getEntitiesStream, buildFilter, buildFormatter, serialize } = require('wikibase-dump-filter')
 
 // Build a filter from options documented above
 const customFilter = buildFilter({
@@ -58,7 +58,7 @@ getEntitiesStream(process.stdin)
 
 Or in a more condensed way
 ```js
-const { filterFormatAndSerialize } = require('wikidata-filter')
+const { filterFormatAndSerialize } = require('wikibase-dump-filter')
 const options = {
   type: 'item',
   keep: [ 'labels', 'claims' ]

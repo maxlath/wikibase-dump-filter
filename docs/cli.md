@@ -30,9 +30,9 @@
 
 * **from a local file**
 ```sh
-cat entities.json | wikidata-filter --claim P31:Q5 > humans.ndjson
-cat entities.json | wikidata-filter --claim P18 > entities_with_an_image.ndjson
-cat entities.json | wikidata-filter --claim P31:Q5,Q6256 > humans_and_countries.ndjson
+cat entities.json | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
+cat entities.json | wikibase-dump-filter --claim P18 > entities_with_an_image.ndjson
+cat entities.json | wikibase-dump-filter --claim P31:Q5,Q6256 > humans_and_countries.ndjson
 ```
 this command filters `entities_dump.json` into a subset where all lines are the json with an entity having [Q5](https://wikidata.org/entity/Q5) in it's [P31](https://wikidata.org/wiki/Property:P31) claims
 
@@ -40,92 +40,71 @@ this command filters `entities_dump.json` into a subset where all lines are the 
 
 * **directly from a Wikidata dump**
 ```sh
-curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip -d | wikidata-filter --claim P31:Q5 > humans.ndjson
+curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip -d | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
 ```
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 
-Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 100 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from [Wikidata Query](http://query.wikidata.org/), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) ([wikidata-sdk](https://github.com/maxlath/wikidata-sdk#get-entities-by-id) can be helpful there).
+Of course, **this probably only make sense if the kind of entities you are looking for is somewhere above 2 000 000 units(?)**, given that under this level, it would probably be faster/more efficient to get the list of ids from your Wikibase Query Service (see [Wikidata Query Service](http://query.wikidata.org/)), then [get the entities data from the API](https://www.wikidata.org/w/api.php?action=help&modules=wbgetentities) (which could easily be done using [wikibase-cli `wb data`](https://github.com/maxlath/wikibase-cli/blob/master/docs/read_operations.md#wb-data)).
 
 #### claims logical operators
 **and**
 ```sh
 # operator: &
-cat entities.json | wikidata-filter --claim 'P31:Q571&P50' > books_with_an_author.ndjson
+cat entities.json | wikibase-dump-filter --claim 'P31:Q571&P50' > books_with_an_author.ndjson
 ```
 
 **or**
 ```sh
 # operator: |
-cat entities.json | wikidata-filter --claim 'P31:Q146|P31:Q144' > cats_and_dogs.ndjson
+cat entities.json | wikibase-dump-filter --claim 'P31:Q146|P31:Q144' > cats_and_dogs.ndjson
 
 # the 'or' operator has priority on the 'and' operator:
 # this claim filter is equivalent to (P31:Q571 && (P50 || P110))
-cat entities.json | wikidata-filter --claim 'P31:Q571&P50|P110' > books_with_an_author_or_an_illustrator.ndjson
+cat entities.json | wikibase-dump-filter --claim 'P31:Q571&P50|P110' > books_with_an_author_or_an_illustrator.ndjson
 ```
 
 **not**
 ```sh
 # operator: ~
-cat entities.json | wikidata-filter --claim 'P31:Q571&~P50' > books_without_author.ndjson
+cat entities.json | wikibase-dump-filter --claim 'P31:Q571&~P50' > books_without_author.ndjson
 ```
 
 #### Long claim option
-If [your claim is too long and triggers a `Argument list too long` error](https://github.com/maxlath/wikidata-filter/issues/13), you can pass a file instead:
+If [your claim is too long and triggers a `Argument list too long` error](https://github.com/maxlath/wikibase-dump-filter/issues/13), you can pass a file instead:
 ```sh
 echo 'P31:Q5,Q6256' > ./claim
-cat entities.json | wikidata-filter --claim ./claim > humans_and_countries.ndjson
+cat entities.json | wikibase-dump-filter --claim ./claim > humans_and_countries.ndjson
 ```
 
 ### By [sitelinks](https://www.wikidata.org/wiki/Wikidata:Glossary#Sitelinks)
 Keep only entities with a certain sitelink
 ```sh
 # entities with a page on Wikimedia Commons
-cat entities.json | wikidata-filter --sitelink commonswiki > subset.ndjson
+cat entities.json | wikibase-dump-filter --sitelink commonswiki > subset.ndjson
 # entities with a Dutch Wikipedia article
-cat entities.json | wikidata-filter --sitelink nlwiki > subset.ndjson
+cat entities.json | wikibase-dump-filter --sitelink nlwiki > subset.ndjson
 # entities with a Russian Wikipedia articles or Wikiquote article
-cat entities.json | wikidata-filter --sitelink 'ruwiki|ruwikiquote' > subset.ndjson
+cat entities.json | wikibase-dump-filter --sitelink 'ruwiki|ruwikiquote' > subset.ndjson
 ```
 You can even do finer filters by combining conditions with `&` (AND) / `|` (OR).
 ```sh
 # entities with Chinese and French Wikipedia articles
-cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki' > subset.ndjson
+cat entities.json | wikibase-dump-filter --sitelink 'zhwiki&frwiki' > subset.ndjson
 # entities with Chinese and French Wikipedia articles, or Chinese and Spanish articles
-cat entities.json | wikidata-filter --sitelink 'zhwiki&frwiki|eswiki' > subset.ndjson
+cat entities.json | wikibase-dump-filter --sitelink 'zhwiki&frwiki|eswiki' > subset.ndjson
 ```
 **NB**: `A&B|C` is interpreted as `A AND (B OR C)`
 
 ### By [type](https://www.wikidata.org/wiki/Wikidata:Glossary#Entities.2C_items.2C_properties_and_queries)
 Default: `item`
 ```sh
-cat entities.json | wikidata-filter --type item
-cat entities.json | wikidata-filter --type property
-cat entities.json | wikidata-filter --type both
+cat entities.json | wikibase-dump-filter --type item
+cat entities.json | wikibase-dump-filter --type property
+cat entities.json | wikibase-dump-filter --type both
 ```
 
 ### By something else
-Need another kind of filter? Just [ask for it in the issues](https://github.com/maxlath/wikidata-filter/issues), or make a pull request!
-
-
-### Parallelize
-If your hardware happens to have several cores, we can do better:
-* replace `gzip` by [`pigz`](https://zlib.net/pigz/)
-* load balance lines over several `wikidata-filter` processes using [`load-balance-lines`](https://github.com/maxlath/load-balance-lines) or something that does the same job
-
-```sh
-# install those new dependencies
-sudo apt-get install pigz
-npm install --global load-balance-lines
-
-# increase the max RAM available to node processes, to prevent allocation errors
-NODE_OPTIONS=--max_old_space_size=4096
-
-wget --continue https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz
-nice -n+19 pigz -d < latest-all.json.gz | nice -n+19 load-balance-lines wikidata-filter --claim P31:Q5 > humans.ndjson
-```
-
-Using [`nice`](http://man7.org/linux/man-pages/man1/nice.1.html) to tell the system that those processes, while eager to eat all the CPUs, should have the lowest priority.
-If you are not familiar with the `<` operator, it's the equivalent of `cat latest-all.json.gz | nice -n+19 pigz -d` but in a shell built-in way. (See [I/O Redirection doc](http://www.tldp.org/LDP/abs/html/io-redirection.html))
+Need another kind of filter? Just [ask for it in the issues](https://github.com/maxlath/wikibase-dump-filter/issues), or make a pull request!
 
 ## Format entities
 ### Filter attributes
@@ -135,28 +114,28 @@ All in all, this whole takes a lot of place and might not be needed in your use 
 
 This can be done with either the `--keep` or the `--omit` command:
 ```sh
-cat entities.json | wikidata-filter --omit claims,sitelinks > humans.ndjson
+cat entities.json | wikibase-dump-filter --omit claims,sitelinks > humans.ndjson
 # which is equivalent to
-cat entities.json | wikidata-filter --keep id,type,labels,descriptions,aliases > humans.ndjson
+cat entities.json | wikibase-dump-filter --keep id,type,labels,descriptions,aliases > humans.ndjson
 ```
 
 ### Filter languages
 Keep only the desired languages for labels, descriptions, aliases, and sitelinks.
 ```sh
-cat entities.json | wikidata-filter --languages en,fr,de,zh,eo > subset.ndjson
+cat entities.json | wikibase-dump-filter --languages en,fr,de,zh,eo > subset.ndjson
 ```
 
 ### Simplify entity data
 Uses [wikidata-sdk `simplify.entity` function](https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md) to parse the labels, descriptions, aliases, claims, and sitelinks.
 ```sh
 # Default simplify options
-cat entities.json | wikidata-filter --simplify > simplified_dump.ndjson
+cat entities.json | wikibase-dump-filter --simplify > simplified_dump.ndjson
 # Custom options, see wdk.simplify.entity documentation https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_entities_data.md
 # and specifically for claims options, see https://github.com/maxlath/wikidata-sdk/blob/master/docs/simplify_claims.md#options
-cat entities.json | wikidata-filter --simplify '{"keepRichValues":"true","keepQualifiers":"true","keepReferences":"true"}' > simplified_dump.ndjson
+cat entities.json | wikibase-dump-filter --simplify '{"keepRichValues":"true","keepQualifiers":"true","keepReferences":"true"}' > simplified_dump.ndjson
 # The options can also be passed in a lighter, urlencoded-like, key=value format
 # that's simpler than typing all those JSON double quotes
-cat entities.json | wikidata-filter --simplify 'keepRichValues=true&keepQualifiers=true&keepReferences=true' > simplified_dump.ndjson
+cat entities.json | wikibase-dump-filter --simplify 'keepRichValues=true&keepQualifiers=true&keepReferences=true' > simplified_dump.ndjson
 ```
 
 ## Other options
@@ -167,13 +146,6 @@ cat entities.json | wikidata-filter --simplify 'keepRichValues=true&keepQualifie
 -V, --version                  output the version number
 ```
 
-## Examples
-
-### Get all entities with a Chinese and a French Wikipedia article, keeping only id, labels, and sitelinks matching those languages
-
-The [equivalent SPARQL query](https://query.wikidata.org/#SELECT%20%3Fs%20%3FsLabel%20WHERE%20%7B%0A%20%20%20%20%3Farticlea%20schema%3Aabout%20%3Fs%20.%0A%20%20%20%20%3Farticlea%20schema%3AisPartOf%20%3Chttps%3A%2F%2Fzh.wikipedia.org%2F%3E%20.%0A%20%20%20%20%3Farticleb%20schema%3Aabout%20%3Fs%20.%0A%20%20%20%20%3Farticleb%20schema%3AisPartOf%20%3Chttps%3A%2F%2Ffr.wikipedia.org%2F%3E%20.%0A%20%20%20%20%23%20The%20article%20shouldn%27t%20be%20a%20disambiguation%20page%0A%20%20%09FILTER%20NOT%20EXISTS%20%7B%20%3Fs%20wdt%3AP31%20wd%3AQ4167410.%20%7D%0A%7D%0ALIMIT%205) times out
-
-```sh
-DUMP='https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz'
-curl $DUMP | gzip -d | wikidata-filter --sitelink 'zhwiki&frwiki' --keep id,labels,sitelinks --languages zh,fr --simplify > subset.ndjson
-```
+## Tips
+* [examples](https://github.com/maxlath/wikidata-sdk/blob/master/docs/examples.md)
+* [parallelize](https://github.com/maxlath/wikidata-sdk/blob/master/docs/Parallelize.md)
