@@ -4,7 +4,7 @@
 
 Typically useful to create a formatted subset of a Wikibase JSON dump.
 
-**Some context**: This tool was formerly known as `wikidata-filter`. [Wikidata](https://en.wikipedia.org/wiki/Wikidata) is an instance of [Wikibase](https://en.wikipedia.org/wiki/Wikibase). This tool was primarly designed with Wikidata in mind, but should be usable for any Wikibase instance.
+**Some context**: This tool was formerly known as [`wikidata-filter`](https://www.npmjs.com/package/wikidata-filter). [Wikidata](https://en.wikipedia.org/wiki/Wikidata) is an instance of [Wikibase](https://en.wikipedia.org/wiki/Wikibase). This tool was primarly designed with Wikidata in mind, but should be usable for any Wikibase instance.
 
 This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wiki/Grants:Project/WikidataJS).
 
@@ -22,7 +22,7 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 [![Node](https://img.shields.io/badge/node-%3E=%20v6.4.0-brightgreen.svg)](http://nodejs.org)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-[![NPM](https://nodei.co/npm/wikidata-filter.png?stars&downloads&downloadRank)](https://npmjs.com/package/wikidata-filter/)
+[![NPM](https://nodei.co/npm/wikidata-filter.png?stars&downloads&downloadRank)](https://npmjs.com/package/wikibase-dump-filter/)
 
 ## Summary
 
