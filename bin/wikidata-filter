@@ -7,6 +7,7 @@ const list = val => val.split(',')
 const getEntitiesStream = require('../lib/get_entities_stream')
 const filterFormatAndSerializeEntity = require('../lib/filter_format_and_serialize_entity')
 const { beforeFilter, afterFilter, afterNegativeFilter, updateWithLastData } = require('../lib/progress_bar_hooks')
+const { logHeaders } = require('../lib/update_progress_bar')
 const handleErrors = require('../lib/handle_errors')
 
 const options = program
@@ -25,19 +26,25 @@ const options = program
   .option('-q, --quiet', help.quiet)
   .parse(process.argv)
 
-let progress
+let showProgressBar
+let afterLastLine = () => {}
+
 if (process.stdout.isTTY) {
-  progress = options.progress && !options.quiet
+  // When output is the terminal, show only the kept lines
+  // unless progress logs are explicitly requested
+  showProgressBar = options.progress === true && options.quiet !== true
 } else {
-  progress = !options.quiet
+  showProgressBar = options.quiet !== true
 }
 
-if (progress) {
+if (showProgressBar) {
+  logHeaders()
   Object.assign(options, { beforeFilter, afterFilter, afterNegativeFilter })
+  afterLastLine = updateWithLastData
 }
 
 getEntitiesStream(process.stdin)
 .filterAndMap(filterFormatAndSerializeEntity(options))
-.on('close', updateWithLastData)
+.on('close', afterLastLine)
 .pipe(process.stdout)
 .on('error', handleErrors)
