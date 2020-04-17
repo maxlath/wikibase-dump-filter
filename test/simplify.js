@@ -31,7 +31,7 @@ describe('simplify', () => {
   })
 
   describe('options', () => {
-    it('should pass the options to the wdk.simplify function', done => {
+    it('should pass the options to the wbk.simplify function', done => {
       const result = formatEntity({ simplify: { keepQualifiers: true } })(getEntity())
       should(result.claims.P1549[2].mainsnak).not.be.ok()
       result.claims.P1549[2].qualifiers.should.be.an.Object()
