@@ -39,6 +39,7 @@ if (process.stdout.isTTY) {
 
 if (showProgressBar) {
   logHeaders()
+  updateWithLastData()
   Object.assign(options, { beforeFilter, afterFilter, afterNegativeFilter })
   afterLastLine = updateWithLastData
 }
