@@ -66,7 +66,7 @@ cat entities.json | wikidata-filter --claim 'P31:Q571&P50|P110' > books_with_an_
 **not**
 ```sh
 # operator: ~
-cat entities.json | wikidata-filter --claim 'P31:Q571|~P50' > books_without_author.ndjson
+cat entities.json | wikidata-filter --claim 'P31:Q571&~P50' > books_without_author.ndjson
 ```
 
 #### Long claim option
