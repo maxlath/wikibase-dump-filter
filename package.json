@@ -1,6 +1,6 @@
 {
   "name": "wikidata-filter",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Filter and format a newline-delimited JSON stream of Wikidata entities",
   "main": "lib/index.js",
   "bin": {
