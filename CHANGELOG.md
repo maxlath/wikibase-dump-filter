@@ -1,6 +1,15 @@
 # CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
+## 5.0.0 - 2020-04-17
+Rename project: `wikidata-filter` -> `wikibase-dump-filter`
+
+To update from `wikidata-filter` (assuming that you had `wikidata-filter` installed globally):
+```sh
+npm uninstall --global wikidata-filter
+npm install --global wikibase-dump-filter
+```
+
 ## 4.0.0 - 2019-11-26
 ### BREAKING CHANGES
 
