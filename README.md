@@ -32,8 +32,6 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 
 - [Install](#install)
 - [How-to](docs/how_to.md)
-  - [CLI](docs/cli.md)
-  - [module](docs/module.md)
 - [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)
@@ -52,6 +50,8 @@ npm install wikibase-dump-filter
 ```
 
 ## How-to
+This package can both be used as a command-line tool (CLI) and as a NodeJS module. Those 2 uses have there own documentation page but the options stay the same, and are documented in the CLI section
+
 * [CLI documentation](docs/cli.md)
 * [module documentation](docs/module.md)
 

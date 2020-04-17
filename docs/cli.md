@@ -13,14 +13,12 @@
   - [By sitelinks](#by-sitelinks)
   - [By type](#by-type)
   - [By something else](#by-something-else)
-  - [Parallelize](#parallelize)
 - [Format entities](#format-entities)
   - [Filter attributes](#filter-attributes)
   - [Filter languages](#filter-languages)
   - [Simplify entity data](#simplify-entity-data)
 - [Other options](#other-options)
-- [Examples](#examples)
-  - [Get all entities with a Chinese and a French Wikipedia article, keeping only id, labels, and sitelinks matching those languages](#get-all-entities-with-a-chinese-and-a-french-wikipedia-article-keeping-only-id-labels-and-sitelinks-matching-those-languages)
+- [Tips](#tips)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

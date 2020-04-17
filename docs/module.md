@@ -12,7 +12,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-The wikibase-dump-filter module exposes the functions used internally by the [CLI](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md) to parse, map, filter, and serialize entities from a Wikibase JSON dumps. This should allow to write more custom filters without having to start from scratch.
+The `wikibase-dump-filter` module exposes the functions used internally by the [CLI](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md) to parse, map, filter, and serialize entities from a Wikibase JSON dumps. This should allow to write more custom filters without having to start from scratch.
 
 ### parseEntitiesStream
 The all-in-one helper
