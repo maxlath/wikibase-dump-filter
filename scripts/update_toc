@@ -6,6 +6,5 @@ which doctoc > /dev/null || {
 }
 
 doctoc README.md docs/cli.md docs/module.md
-sed -i 's/#how-to/docs\/how_to\.md/' README.md
 sed -i 's/#cli/docs\/cli\.md/' README.md
 sed -i 's/#module/docs\/module\.md/' README.md

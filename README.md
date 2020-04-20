@@ -35,7 +35,7 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 - [Download dump](#download-dump)
   - [Wikidata dumps](#wikidata-dumps)
   - [Your own Wikibase instance dump](#your-own-wikibase-instance-dump)
-- [How-to](docs/how_to.md)
+- [How-to](#how-to)
 - [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)
