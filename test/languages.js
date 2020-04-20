@@ -5,12 +5,11 @@ const entity = getEntity()
 
 describe('languages', () => {
   describe('validation', () => {
-    it('should reject an invalid language', done => {
+    it('should reject an invalid language', () => {
       should(() => formatEntity({ languages: 'zzzzz' })).throw()
-      done()
     })
   })
-  it('should keep data for the specified languages', done => {
+  it('should keep data for the specified languages', () => {
     const result = formatEntity({ languages: ['es', 'de', 'ca', 'th'] })(entity)
     result.labels.es.should.be.ok()
     result.labels.de.should.be.ok()
@@ -26,6 +25,5 @@ describe('languages', () => {
     Object.keys(result.aliases).length.should.equal(2)
     result.sitelinks.eswikivoyage.should.be.ok()
     Object.keys(result.sitelinks).length.should.equal(10)
-    done()
   })
 })

@@ -5,39 +5,32 @@ const entity = getEntity()
 
 describe('sitelinks', () => {
   describe('validation', () => {
-    it('should reject invalid sitelinks', done => {
+    it('should reject invalid sitelinks', () => {
       should(() => filterEntity({ sitelink: 'frwi-ki|enwiki&elficwiki' })).throw()
-      done()
     })
   })
-  it('should return true if it has the specified sitelink', done => {
+  it('should return true if it has the specified sitelink', () => {
     const result = filterEntity({ sitelink: 'frwiki' })(entity)
     result.should.be.true()
-    done()
   })
-  it("should return false if it doesn't have the sitelink", done => {
+  it("should return false if it doesn't have the sitelink", () => {
     const result = filterEntity({ sitelink: 'elficwiki' })(entity)
     result.should.be.false()
-    done()
   })
-  it('should return true if it has one of the possible sitelink', done => {
+  it('should return true if it has one of the possible sitelink', () => {
     const result = filterEntity({ sitelink: 'elficwiki|frwiki' })(entity)
     result.should.be.true()
-    done()
   })
-  it("should return false if it doesn't have one of the required sitelinks", done => {
+  it("should return false if it doesn't have one of the required sitelinks", () => {
     const result = filterEntity({ sitelink: 'elficwiki&frwiki' })(entity)
     result.should.be.false()
-    done()
   })
-  it('should return true if it matches all the required groups', done => {
+  it('should return true if it matches all the required groups', () => {
     const result = filterEntity({ sitelink: 'elficwiki|frwiki&enwiki' })(entity)
     result.should.be.true()
-    done()
   })
-  it("should return false if it doesn't match all the required groups", done => {
+  it("should return false if it doesn't match all the required groups", () => {
     const result = filterEntity({ sitelink: 'frwiki|enwiki&elficwiki' })(entity)
     result.should.be.false()
-    done()
   })
 })

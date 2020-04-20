@@ -5,14 +5,13 @@ const entity = getEntity()
 
 describe('attributes', () => {
   describe('validation', () => {
-    it('should reject an invalid attribute', done => {
+    it('should reject an invalid attribute', () => {
       should(() => formatEntity({ keep: ['bulgroz'] })).throw()
-      done()
     })
   })
 
   describe('keep', () => {
-    it('should keep specified attributes, omit the others', done => {
+    it('should keep specified attributes, omit the others', () => {
       const options = { keep: ['id'] }
       const result = formatEntity(options)(entity)
       result.id.should.be.ok()
@@ -21,12 +20,11 @@ describe('attributes', () => {
       should(result.labels).not.be.ok()
       should(result.descriptions).not.be.ok()
       should(result.sitelinks).not.be.ok()
-      done()
     })
   })
 
   describe('omit', () => {
-    it('should omit specified attributes, keep the others', done => {
+    it('should omit specified attributes, keep the others', () => {
       const options = { omit: ['sitelinks'] }
       const result = formatEntity(options)(entity)
       result.id.should.be.ok()
@@ -35,7 +33,6 @@ describe('attributes', () => {
       result.labels.should.be.ok()
       result.descriptions.should.be.ok()
       should(result.sitelinks).not.be.ok()
-      done()
     })
   })
 })

@@ -3,19 +3,17 @@ const getEntitiesStream = require('../lib/get_entities_stream.js')
 const fs = require('fs')
 
 describe('get entities stream', () => {
-  it('should be a function', done => {
+  it('should be a function', () => {
     getEntitiesStream.should.be.a.Function()
-    done()
   })
 
-  it('should have stream methods', done => {
+  it('should have stream methods', () => {
     const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
     const entitiesStream = getEntitiesStream(stream)
     entitiesStream.map.should.be.a.Function()
     entitiesStream.filter.should.be.a.Function()
     entitiesStream.filterAndMap.should.be.a.Function()
     entitiesStream.tap.should.be.a.Function()
-    done()
   })
 
   describe('map', () => {
