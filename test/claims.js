@@ -19,9 +19,14 @@ describe('claims', () => {
       result2.should.be.true()
     })
 
+    it('should return true if it has the specified claim as a non-truthy claim', () => {
+      const result = filterEntity({ claim: 'P131:Q174193' })(entity)
+      result.should.be.true()
+    })
+
     it('should return false if it miss the specified claim', () => {
       const result = filterEntity({ claim: 'P31:Q5' })(entity)
-      should(result).be.false()
+      result.should.be.false()
       const result2 = filterEntity({ claim: 'P2002' })(entity)
       should(result2).be.false()
     })
@@ -30,9 +35,14 @@ describe('claims', () => {
   describe('negative claim', () => {
     it('should return false if it has the specified claim', () => {
       const result = filterEntity({ claim: '~P31:Q3336843' })(entity)
-      should(result).be.false()
+      result.should.be.false()
       const result2 = filterEntity({ claim: '~P31' })(entity)
       should(result2).be.false()
+    })
+
+    it('should return false if it has the specified claim as a non-truthy claim', () => {
+      const result = filterEntity({ claim: '~P131:Q174193' })(entity)
+      result.should.be.false()
     })
 
     it('should return true if it miss the specified claim', () => {
@@ -63,7 +73,7 @@ describe('claims', () => {
   describe('conjonctive claims', () => {
     it("should return false if it doesn't have all the specified claim", () => {
       const result = filterEntity({ claim: 'P31:Q571&P300' })(entity)
-      should(result).be.false()
+      result.should.be.false()
     })
 
     it('should return true if it has all the specified claim', () => {
