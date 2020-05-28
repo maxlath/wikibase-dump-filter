@@ -136,6 +136,19 @@ cat entities.json | wikibase-dump-filter --simplify '{"keepRichValues":"true","k
 cat entities.json | wikibase-dump-filter --simplify 'keepRichValues=true&keepQualifiers=true&keepReferences=true' > simplified_dump.ndjson
 ```
 
+All the options (see [`wbk.simplify.entity` documentation](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entity) for more details):
+
+* claims simplification options:
+  * [`entityPrefix` and `propertyPrefix`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#add-prefixes-to-entities-and-properties-ids) (string)
+  * [`keepRichValues`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-rich-values) (boolean)
+  * [`keepQualifiers`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-qualifiers) (boolean)
+  * [`keepReferences`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-references) (boolean)
+  * [`keepIds`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-ids) (boolean)
+  * [`keepHashes`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-hashes) (boolean)
+  * [`keepNonTruthy`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_claims.md#keep-non-truthy-statements) (boolean)
+* sitelinks simplification options:
+  * [`addUrl`](https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#add-sitelinks-urls)  (boolean)
+
 ## Other options
 ```
 -h, --help                     output usage information
