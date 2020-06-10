@@ -24,6 +24,9 @@
 
 
 ## Filter entities
+
+:warning: filtering entities is nice, but for better performance, make sure to have a look at [prefiltering](/docs/prefilter.md).
+
 ### By [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
 * **from a local file**
@@ -55,6 +58,8 @@ cat entities.json | wikibase-dump-filter --claim 'P31:Q571&P50' > books_with_an_
 ```sh
 # operator: |
 cat entities.json | wikibase-dump-filter --claim 'P31:Q146|P31:Q144' > cats_and_dogs.ndjson
+# which is equivalent to
+cat entities.json | wikibase-dump-filter --claim 'P31:Q146,Q144' > cats_and_dogs.ndjson
 
 # the 'or' operator has priority on the 'and' operator:
 # this claim filter is equivalent to (P31:Q571 && (P50 || P110))
@@ -158,5 +163,6 @@ All the options (see [`wbk.simplify.entity` documentation](https://github.com/ma
 ```
 
 ## Tips
+* [prefilter](https://github.com/maxlath/wikidata-sdk/blob/master/docs/prefilter.md)
+* [parallelize](https://github.com/maxlath/wikidata-sdk/blob/master/docs/parallelize.md)
 * [examples](https://github.com/maxlath/wikidata-sdk/blob/master/docs/examples.md)
-* [parallelize](https://github.com/maxlath/wikidata-sdk/blob/master/docs/Parallelize.md)
