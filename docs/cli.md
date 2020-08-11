@@ -163,6 +163,6 @@ All the options (see [`wbk.simplify.entity` documentation](https://github.com/ma
 ```
 
 ## Tips
-* [prefilter](https://github.com/maxlath/wikidata-sdk/blob/master/docs/prefilter.md)
-* [parallelize](https://github.com/maxlath/wikidata-sdk/blob/master/docs/parallelize.md)
-* [examples](https://github.com/maxlath/wikidata-sdk/blob/master/docs/examples.md)
+* [prefilter](https://github.com/maxlath/wikibase-dump-filter/blob/master/docs/prefilter.md)
+* [parallelize](https://github.com/maxlath/wikibase-dump-filter/blob/master/docs/parallelize.md)
+* [examples](https://github.com/maxlath/wikibase-dump-filter/blob/master/docs/examples.md)
