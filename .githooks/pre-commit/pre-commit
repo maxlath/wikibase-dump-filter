@@ -1,1 +1,6 @@
-npm run lint && npm run test
+#!/usr/bin/env bash
+git status --porcelain | grep -E "^(A|M)" | grep -E '.js$' && {
+  npm run lint && npm run test
+} || {
+  echo 'no js files in this commit: no need to lint or test'
+}
