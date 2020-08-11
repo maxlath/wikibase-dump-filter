@@ -3,7 +3,7 @@
 Filtering a full dump takes a lot of time, and one of the reasons for that is that `wikibase-dump-filter` takes every line of the dump, and passes it through `JSON.parse` to be then able to make tests on it as a JS object. While there could be [ways to parse JSON objects faster](https://arxiv.org/abs/1902.08318), the biggest gains come from NOT parsing it in the first place, which can be done by pre-filtering the lines based on what you know of the entities you are looking for.
 
 The following documentation might look like a `grep` tutorial. Because it's one ;)
-This prefiltering step could theoretically be integrated directly in to `wikibase-dump-filter`, but that would mean more code for something other tools do already very well, and with potentially better performance that what we could achieve in NodeJS.
+This prefiltering step could theoretically be integrated directly in to `wikibase-dump-filter`, but that would mean more code for something other tools do already very well, and with potentially better performance that what we could be achieved in NodeJS.
 
 ### Basic prefilter
 
