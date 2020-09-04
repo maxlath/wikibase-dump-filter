@@ -41,7 +41,7 @@ this command filters `entities_dump.json` into a subset where all lines are the 
 
 * **directly from a Wikidata dump**
 ```sh
-curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz | gzip -d | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
+curl https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2 | bzcat | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
 ```
 this can be quite convinient when you don't have enough space to keep the whole decompressed dump on your disk: here you only write the desired subset.
 

@@ -3,6 +3,6 @@
 
 mkdir -p test/fixtures
 # get the first 50 lines of the latest dump
-curl -s https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz |gzip -d |head -n 50 > ./test/fixtures/entities
+curl -s https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2 | bzcat | head -n 50 > ./test/fixtures/entities
 
 cat ./test/fixtures/entities |head -n 2 |tail -n 1 |sed 's/,$//' > ./test/fixtures/entity
