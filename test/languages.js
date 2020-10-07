@@ -9,8 +9,9 @@ describe('languages', () => {
       should(() => formatEntity({ languages: 'zzzzz' })).throw()
     })
   })
+
   it('should keep data for the specified languages', () => {
-    const result = formatEntity({ languages: ['es', 'de', 'ca', 'th'] })(entity)
+    const result = formatEntity({ languages: [ 'es', 'de', 'ca', 'th' ] })(entity)
     result.labels.es.should.be.ok()
     result.labels.de.should.be.ok()
     result.labels.ca.should.be.ok()
