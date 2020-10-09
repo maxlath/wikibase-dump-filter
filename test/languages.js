@@ -27,4 +27,13 @@ describe('languages', () => {
     result.sitelinks.eswikivoyage.should.be.ok()
     Object.keys(result.sitelinks).length.should.equal(10)
   })
+
+  it('should not crash when sitelinks are omitted', () => {
+    const result = formatEntity({ languages: [ 'es' ], omit: [ `labels`, `descriptions`, `aliases`, `claims`, `sitelinks` ] })(entity)
+    should(result.labels).not.be.ok()
+    should(result.descriptions).not.be.ok()
+    should(result.aliases).not.be.ok()
+    should(result.claims).not.be.ok()
+    should(result.sitelinks).not.be.ok()
+  })
 })
