@@ -22,7 +22,7 @@ const { parseEntitiesStream } = require('wikibase-dump-filter')
 const options = {
   type: 'item',
   keep: [ 'labels', 'claims' ]
-  simplified: true,
+  simplify: true,
   languages: [ 'zh', 'fr' ]
 }
 parseEntitiesStream(process.stdin, options)
@@ -43,7 +43,7 @@ const customFilter = buildFilter({
 
 // Build a formatter from options documented above
 const customFormatter = buildFormatter({
-  simplified: true,
+  simplify: true,
   keep: [ 'labels', 'claims' ]
   languages: [ 'zh', 'fr' ]
 })
@@ -62,7 +62,7 @@ const { filterFormatAndSerialize } = require('wikibase-dump-filter')
 const options = {
   type: 'item',
   keep: [ 'labels', 'claims' ]
-  simplified: true,
+  simplify: true,
   languages: [ 'zh', 'fr' ]
 }
 getEntitiesStream(process.stdin)
