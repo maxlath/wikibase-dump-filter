@@ -40,7 +40,7 @@
     "lodash.throttle": "^4.1.1",
     "split": "^1.0.0",
     "through": "^2.3.8",
-    "wikibase-sdk": "^7.4.0"
+    "wikibase-sdk": "^7.9.1"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
