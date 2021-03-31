@@ -14,7 +14,7 @@ npm install --global wikibase-dump-filter
 ### BREAKING CHANGES
 
 Rewrote the [module interface](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md). Convert your code from `v3` to `v4`:
-* `parse` -> `parseEntitiesStream`
+* `parse` -> `getEntitiesStream`
 * `filter` -> `filterFormatAndSerialize`
 * `serializer` -> `serialize`
 * stream method `filter` -> `filterAndMap`
