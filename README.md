@@ -23,6 +23,7 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 [![NPM](https://nodei.co/npm/wikidata-filter.png?stars&downloads&downloadRank)](https://npmjs.com/package/wikibase-dump-filter/)
+[Download stats](https://npm-stat.com/charts.html?package=wikibase-dump-filter)
 
 ## Summary
 
