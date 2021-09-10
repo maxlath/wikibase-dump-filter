@@ -7,7 +7,7 @@ This prefiltering step could theoretically be integrated directly in to `wikibas
 
 ### Basic prefilter
 
-For instance, if you are looking for all the instances of paintings in the dump (`P31:Q5`), instead of directly running
+For instance, if you are looking for all the instances of humans in the dump (`P31:Q5`), instead of directly running
 ```sh
 cat entities.json | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
 ```
