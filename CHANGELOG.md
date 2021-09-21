@@ -13,7 +13,7 @@ npm install --global wikibase-dump-filter
 ## 4.0.0 - 2019-11-26
 ### BREAKING CHANGES
 
-Rewrote the [module interface](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md). Convert your code from `v3` to `v4`:
+Rewrote the [module interface](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/module.md). Convert your code from `v3` to `v4`:
 * `parse` -> `getEntitiesStream`
 * `filter` -> `filterFormatAndSerialize`
 * `serializer` -> `serialize`
@@ -21,31 +21,31 @@ Rewrote the [module interface](https://github.com/maxlath/wikidata-filter/blob/m
 
 ### New features
 * CLI
-  * Added [`--quiet` option](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#other-options)
+  * Added [`--quiet` option](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#other-options)
 * NodeJS module
   * get access to more internal helpers: `getEntitiesStream`, `buildFilter`, `buildFormatter`
   * streams returned by `getEntitiesStream` have new methods: `filter`, `map`, `tap`
 
 ## 3.0.0 - 2019-05-05
 ### BREAKING CHANGES
-* [The `--simplified` option was renamed `--simplify` and accepts options as JSON or key=value](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#simplify-entity-data) ([`64ab6ce`](https://github.com/maxlath/wikidata-filter/commit/64ab6ce), [`54af4ad`](https://github.com/maxlath/wikidata-filter/commit/54af4ad))
+* [The `--simplified` option was renamed `--simplify` and accepts options as JSON or key=value](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#simplify-entity-data) ([`64ab6ce`](https://github.com/maxlath/wikibase-dump-filter/commit/64ab6ce), [`54af4ad`](https://github.com/maxlath/wikibase-dump-filter/commit/54af4ad))
 
 ## 2.4.0 - 2019-05-05
-* Added support for [claim filters with logical operations](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#claims-logical-operators) ([`642eaa3`](https://github.com/maxlath/wikidata-filter/commit/642eaa3))
-* Added progress bar ([`2692f3b`](https://github.com/maxlath/wikidata-filter/commit/2692f3b))
+* Added support for [claim filters with logical operations](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#claims-logical-operators) ([`642eaa3`](https://github.com/maxlath/wikibase-dump-filter/commit/642eaa3))
+* Added progress bar ([`2692f3b`](https://github.com/maxlath/wikibase-dump-filter/commit/2692f3b))
 
 ## 2.3.0 - 2018-05-03
-* [Simplify creation of a filtered stream](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md)
+* [Simplify creation of a filtered stream](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/module.md)
 
 ## 2.2.0 - 2018-05-03
-* Added support for [long claim arguments](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#long-claim-option)
+* Added support for [long claim arguments](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#long-claim-option)
 
 ## 2.1.0 - 2017-09-08
-* Added the possibility to [use wikidata-filter as module](https://github.com/maxlath/wikidata-filter/blob/master/docs/module.md)
+* Added the possibility to [use wikidata-filter as module](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/module.md)
 
 ## 2.0.0 - 2017-03-30
 ### BREAKING CHANGES
 * Removed the possibility to pass a claim argument as only argument (that is, without the `-c, --claim` prefix)
 
 ### New features
-* Added [filter by sitelink](https://github.com/maxlath/wikidata-filter/blob/master/docs/cli.md#by-sitelinks)
+* Added [filter by sitelink](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#by-sitelinks)

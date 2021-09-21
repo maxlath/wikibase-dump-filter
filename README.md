@@ -10,10 +10,10 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
 
 <div align="center">
   <br>
-  <a href="https://wikiba.se"><img height="150" src="https://raw.githubusercontent.com/maxlath/wikibase-sdk/master/assets/wikibase.png" alt="wikibase"></a>
+  <a href="https://wikiba.se"><img height="150" src="https://raw.githubusercontent.com/maxlath/wikibase-sdk/main/assets/wikibase.png" alt="wikibase"></a>
   <!-- yeay hacky margin \o/ -->
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://wikidata.org"><img src="https://raw.githubusercontent.com/maxlath/wikibase-sdk/master/assets/wikidata.jpg" alt="wikidata"></a>
+  <a href="https://wikidata.org"><img src="https://raw.githubusercontent.com/maxlath/wikibase-sdk/main/assets/wikidata.jpg" alt="wikidata"></a>
   <br>
   <br>
 </div>
