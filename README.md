@@ -37,7 +37,6 @@ This project [received a Wikimedia Project Grant](https://meta.wikimedia.org/wik
   - [Wikidata dumps](#wikidata-dumps)
   - [Your own Wikibase instance dump](#your-own-wikibase-instance-dump)
 - [How-to](#how-to)
-- [Donate](#donate)
 - [See Also](#see-also)
 - [You may also like](#you-may-also-like)
 - [License](#license)
@@ -79,10 +78,6 @@ This package can both be used as a command-line tool (CLI) and as a NodeJS modul
 
 * [CLI documentation](docs/cli.md)
 * [module documentation](docs/module.md)
-
-## Donate
-
-We are developing and maintaining tools to work with Wikidata from NodeJS, the browser, or simply the command line, with quality and ease of use at heart. Any donation will be interpreted as a "please keep going, your work is very much needed and awesome. PS: love". [Donate](https://liberapay.com/WikidataJS)
 
 ## See Also
 * [wikibase-dump-formatter](https://github.com/maxlath/wikibase-dump-formatter): Extends Wikibase RDF dump prefixed URIs with a custom domain.
