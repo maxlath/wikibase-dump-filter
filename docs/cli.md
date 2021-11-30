@@ -25,7 +25,7 @@
 
 ## Filter entities
 
-:warning: filtering entities is nice, but for better performance, make sure to have a look at [prefiltering](/docs/prefilter.md).
+:warning: Filtering entities is done by parsing entities JSON objects and applying logic on it; while it allows to build very specific filters, this will always be slower than filtering based on text patterns (typically with `grep`): considering your options to [prefilter](/docs/prefilter.md) the dump can save enormous amount of time.
 
 ### By [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
