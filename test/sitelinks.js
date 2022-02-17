@@ -33,4 +33,11 @@ describe('sitelinks', () => {
     const result = filterEntity({ sitelink: 'frwiki|enwiki&elficwiki' })(entity)
     result.should.be.false()
   })
+
+  it('should support old dumps where sitelinks might be empty', () => {
+    const entity = getEntity()
+    delete entity.sitelinks
+    const result = filterEntity({ sitelink: 'frwiki|enwiki&elficwiki' })(entity)
+    should(result).be.false()
+  })
 })

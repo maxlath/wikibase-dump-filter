@@ -85,5 +85,12 @@ describe('claims', () => {
       const result = filterEntity({ claim: 'P31:Q3336843&P300&~P2002' })(entity)
       should(result).be.true()
     })
+
+    it('should support old dumps where claims might be empty', () => {
+      const entity = getEntity()
+      delete entity.claims
+      const result = filterEntity({ claim: 'P31:Q3336843&P300&~P2002' })(entity)
+      should(result).be.false()
+    })
   })
 })
