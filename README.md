@@ -74,7 +74,7 @@ cat dump.json | wikibase-dump-filter --claim P1:Q1 > entities_with_claim_P1_Q1.n
 ```
 
 ## How-to
-This package can both be used as a command-line tool (CLI) and as a NodeJS module. Those 2 uses have there own documentation page but the options stay the same, and are documented in the CLI section
+This package can both be used as a command-line tool (CLI) and as a NodeJS module. Those 2 uses have their own documentation page but the options stay the same, and are documented in the CLI section
 
 * [CLI documentation](docs/cli.md)
 * [module documentation](docs/module.md)
