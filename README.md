@@ -61,7 +61,7 @@ See [CHANGELOG.md](CHANGELOG.md) for version info
 ### Wikidata dumps
 Wikidata provides a bunch of [database dumps](https://www.wikidata.org/wiki/Wikidata:Database_download), among which the desired [JSON dump](https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29). As a Wikidata dump is a very laaarge file (April 2020: 75GB compressed), it is recommended to download that file first before doing operations on it, so that if anything crashes, you don't have to start the download from zero (the download time being usually the bottleneck).
 ```sh
-wget -C https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz
+wget -c https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz
 cat latest-all.json.gz | gzip -d | wikibase-dump-filter --claim P31:Q5 > humans.ndjson
 ```
 
