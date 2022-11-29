@@ -1,12 +1,10 @@
-# CLI
-
-## Summary
+## Command Line Interface (CLI) Overview
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Filter entities](#filter-entities)
+- [Filter of entities, including pre-filter](#filter-entities)
   - [By claims](#by-claims)
     - [claims logical operators](#claims-logical-operators)
     - [Long claim option](#long-claim-option)
@@ -25,7 +23,7 @@
 
 ## Filter entities
 
-:warning: Filtering entities is done by parsing entities JSON objects and applying logic on it; while it allows to build very specific filters, this will always be slower than filtering based on text patterns (typically with `grep`): considering your options to [prefilter](/docs/prefilter.md) the dump can save enormous amount of time.
+:warning: Consider your options to [prefilter](/docs/prefilter.md). The advantage to this step is to potentially save an enormous amount of time using features such as `grep`. Filtering is done by parsing entities JSON objects and applying logic accordingly. 
 
 ### By [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
