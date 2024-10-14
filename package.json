@@ -15,11 +15,11 @@
   "scripts": {
     "git-pre-commit": "./scripts/githooks/pre-commit",
     "init-fixtures": "./scripts/init_fixtures",
-    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter test",
-    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter test",
+    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter tests",
+    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter tests",
     "postpublish": "git push --tags",
     "prepublishOnly": "npm run lint && npm test",
-    "test": "mocha",
+    "test": "mocha tests",
     "update-toc": "./scripts/update_toc"
   },
   "keywords": [

@@ -9,7 +9,7 @@ describe('get entities stream', () => {
   })
 
   it('should have stream methods', () => {
-    const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+    const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
     const entitiesStream = getEntitiesStream(stream)
     entitiesStream.map.should.be.a.Function()
     entitiesStream.filter.should.be.a.Function()
@@ -19,7 +19,7 @@ describe('get entities stream', () => {
 
   describe('map', () => {
     it('should return formatted results', done => {
-      const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+      const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
@@ -33,7 +33,7 @@ describe('get entities stream', () => {
 
   describe('filter', () => {
     it('should keep entities passing the test', done => {
-      const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+      const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
@@ -45,7 +45,7 @@ describe('get entities stream', () => {
     })
 
     it('should reject entities not passing the test', done => {
-      const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+      const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
@@ -59,7 +59,7 @@ describe('get entities stream', () => {
 
   describe('filterAndMap', () => {
     it('should keep and format entities passing the test', done => {
-      const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+      const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
@@ -73,7 +73,7 @@ describe('get entities stream', () => {
     })
 
     it('should reject entities not passing the test', done => {
-      const stream = fs.createReadStream('./test/fixtures/Q22.json', { encoding: 'utf-8' })
+      const stream = fs.createReadStream('./tests/fixtures/Q22.json', { encoding: 'utf-8' })
       const entitiesStream = getEntitiesStream(stream)
 
       entitiesStream
