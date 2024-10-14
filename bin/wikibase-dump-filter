@@ -1,14 +1,18 @@
 #!/usr/bin/env node
-const program = require('commander')
-const { version } = require('../package.json')
-const help = require('../lib/help')
-const list = val => val.split(',')
+import { resolve } from 'node:path'
+import program from 'commander'
+import filterFormatAndSerializeEntity from '../lib/filter_format_and_serialize_entity.js'
+import { getDirname, readJsonFile } from '../lib/fs.js'
+import getEntitiesStream from '../lib/get_entities_stream.js'
+import handleErrors from '../lib/handle_errors.js'
+import help from '../lib/help.js'
+import { beforeFilter, afterFilter, afterNegativeFilter, updateWithLastData } from '../lib/progress_bar_hooks.js'
+import { logHeaders } from '../lib/update_progress_bar.js'
 
-const getEntitiesStream = require('../lib/get_entities_stream')
-const filterFormatAndSerializeEntity = require('../lib/filter_format_and_serialize_entity')
-const { beforeFilter, afterFilter, afterNegativeFilter, updateWithLastData } = require('../lib/progress_bar_hooks')
-const { logHeaders } = require('../lib/update_progress_bar')
-const handleErrors = require('../lib/handle_errors')
+const dirname = getDirname(import.meta.url)
+const { version } = readJsonFile(resolve(dirname, '../package.json'))
+
+const list = val => val.split(',')
 
 const options = program
   .version(version)

@@ -1,6 +1,7 @@
-const should = require('should')
-const filterEntity = require('../lib/filter_entity')
-const { getEntity } = require('./utils')
+import should from 'should'
+import filterEntity from '../lib/filter_entity.js'
+import { getEntity } from './utils.js'
+
 const entity = getEntity()
 
 describe('claims', () => {

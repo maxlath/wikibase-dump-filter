@@ -1,6 +1,7 @@
-const should = require('should')
-const formatEntity = require('../lib/format_entity')
-const { getEntity } = require('./utils')
+import should from 'should'
+import formatEntity from '../lib/format_entity.js'
+import { getEntity } from './utils.js'
+
 const entity = getEntity()
 
 describe('attributes', () => {

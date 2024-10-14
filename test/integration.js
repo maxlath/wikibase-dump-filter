@@ -1,5 +1,5 @@
-const should = require('should')
-const { exec } = require('child_process')
+import { exec } from 'child_process'
+import should from 'should'
 
 describe('integration', () => {
   it('should do as expected', done => {
@@ -14,7 +14,7 @@ describe('integration', () => {
   })
 
   it('should parse json simplify options', done => {
-    exec(`cat ./test/fixtures/Q22.json | ./bin/wikibase-dump-filter -s '{"keepQualifiers":true}'`, (err, stdout, stderr) => {
+    exec('cat ./test/fixtures/Q22.json | ./bin/wikibase-dump-filter -s \'{"keepQualifiers":true}\'', (err, stdout, stderr) => {
       if (err) return done(err)
       const entity = JSON.parse(stdout)
       entity.id.should.equal('Q22')

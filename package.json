@@ -1,6 +1,7 @@
 {
   "name": "wikibase-dump-filter",
   "version": "5.0.7",
+  "type": "module",
   "description": "Filter and format a newline-delimited JSON stream of Wikibase entities",
   "main": "lib/index.js",
   "bin": {
@@ -13,8 +14,8 @@
   ],
   "scripts": {
     "test": "mocha",
-    "lint": "eslint -c .eslintrc lib bin/wikibase-dump-filter test",
-    "lint-fix": "eslint -c .eslintrc --fix lib bin/wikibase-dump-filter test",
+    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter test",
+    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter test",
     "init-fixtures": "./scripts/init_fixtures",
     "update-toc": "./scripts/update_toc",
     "prepublishOnly": "npm run lint && npm test",
@@ -32,26 +33,24 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
-    "lodash.difference": "^4.2.0",
+    "lodash.difference": "^4.5.0",
     "lodash.every": "^4.6.0",
     "lodash.isplainobject": "^4.0.6",
-    "lodash.pick": "^4.2.0",
+    "lodash.pick": "^4.4.0",
     "lodash.some": "^4.6.0",
     "lodash.throttle": "^4.1.1",
     "split": "^1.0.0",
     "through": "^2.3.8",
-    "wikibase-sdk": "^7.9.1"
+    "wikibase-sdk": "^10.2.1"
   },
   "devDependencies": {
-    "eslint": "^7.10.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-arrow": "^1.2.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
     "git-hooks": "^1.1.7",
-    "mocha": "^9.1.3",
+    "mocha": "^10.7.3",
     "should": "^13.2.3"
   },
   "repository": {
@@ -63,7 +62,7 @@
   },
   "homepage": "https://github.com/maxlath/wikibase-dump-filter#readme",
   "engines": {
-    "node": ">= 6.4.0"
+    "node": ">= 14.0.0"
   },
   "directories": {
     "doc": "docs",

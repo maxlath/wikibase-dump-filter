@@ -1,6 +1,7 @@
-const should = require('should')
-const formatEntity = require('../lib/format_entity')
-const { getEntity } = require('./utils')
+import should from 'should'
+import formatEntity from '../lib/format_entity.js'
+import { getEntity } from './utils.js'
+
 const entity = getEntity()
 
 describe('languages', () => {
@@ -29,7 +30,7 @@ describe('languages', () => {
   })
 
   it('should not crash when sitelinks are omitted', () => {
-    const result = formatEntity({ languages: [ 'es' ], omit: [ `labels`, `descriptions`, `aliases`, `claims`, `sitelinks` ] })(entity)
+    const result = formatEntity({ languages: [ 'es' ], omit: [ 'labels', 'descriptions', 'aliases', 'claims', 'sitelinks' ] })(entity)
     should(result.labels).not.be.ok()
     should(result.descriptions).not.be.ok()
     should(result.aliases).not.be.ok()

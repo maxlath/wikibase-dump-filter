@@ -1,6 +1,6 @@
-require('should')
-const formatEntity = require('../lib/filter_entity')
-const filterEntity = require('../lib/format_entity')
+import 'should'
+import formatEntity from '../lib/filter_entity.js'
+import filterEntity from '../lib/format_entity.js'
 
 describe('general', () => {
   describe('format entity', () => {

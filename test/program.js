@@ -1,5 +1,5 @@
-require('should')
-const { execSync } = require('child_process')
+import 'should'
+import { execSync } from 'child_process'
 
 describe('program', () => {
   it('should work', () => {

@@ -1,6 +1,7 @@
-require('should')
-const getEntitiesStream = require('../lib/get_entities_stream.js')
-const fs = require('fs')
+/* eslint-disable array-callback-return */
+import 'should'
+import fs from 'fs'
+import getEntitiesStream from '../lib/get_entities_stream.js'
 
 describe('get entities stream', () => {
   it('should be a function', () => {
