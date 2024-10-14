@@ -13,13 +13,14 @@
     "docs"
   ],
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter test",
-    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter test",
+    "git-pre-commit": "./scripts/githooks/pre-commit",
     "init-fixtures": "./scripts/init_fixtures",
-    "update-toc": "./scripts/update_toc",
+    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter test",
+    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter test",
+    "postpublish": "git push --tags",
     "prepublishOnly": "npm run lint && npm test",
-    "postpublish": "git push --tags"
+    "test": "mocha",
+    "update-toc": "./scripts/update_toc"
   },
   "keywords": [
     "wikidata",
@@ -44,12 +45,12 @@
     "wikibase-sdk": "^10.2.1"
   },
   "devDependencies": {
+    "@vercel/git-hooks": "^1.0.0",
     "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
-    "git-hooks": "^1.1.7",
     "mocha": "^10.7.3",
     "should": "^13.2.3"
   },
