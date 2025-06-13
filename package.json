@@ -34,7 +34,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "split": "^1.0.0",
     "through": "^2.3.8",
     "wikibase-sdk": "^10.2.1"
