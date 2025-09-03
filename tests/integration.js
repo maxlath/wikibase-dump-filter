@@ -2,8 +2,8 @@ import { exec } from 'child_process'
 import should from 'should'
 
 describe('integration', () => {
-  it('should do as expected', done => {
-    exec('cat ./tests/fixtures/entities | ./bin/wikibase-dump-filter -k id -c P31:Q5', (err, stdout, stderr) => {
+  it('should accept --keep formatter and --claim filter', done => {
+    exec('cat ./tests/fixtures/entities | ./bin/wikibase-dump-filter --keep id --claim P31:Q5', (err, stdout, stderr) => {
       if (err) return done(err)
       JSON.parse(stdout.split('\n')[0]).id.should.equal('Q23')
       JSON.parse(stdout.split('\n')[1]).id.should.equal('Q185')
