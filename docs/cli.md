@@ -156,6 +156,7 @@ All the options (see [`wbk.simplify.entity` documentation](https://github.com/ma
 
 ## Other options
 ```
+-z, --include-size             include original entity byte length in output like { ..., "size": 548 }
 -h, --help                     output usage information
 -p, --progress                 enable the progress bar
 -q, --quiet                    disable the progress bar

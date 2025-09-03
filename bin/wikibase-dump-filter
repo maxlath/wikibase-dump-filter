@@ -25,6 +25,7 @@ const options = program
   .option('-k, --keep <attributes>', help.keep, list)
   .option('-l, --languages <languages>', help.languages, list)
   .option('-s, --simplify [boolean|options]', help.simplify)
+  .option('-z, --include-size [boolean]', help.includesize)
   // misc
   .option('-p, --progress', help.progress)
   .option('-q, --quiet', help.quiet)
