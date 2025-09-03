@@ -49,7 +49,7 @@ if (showProgressBar) {
   afterLastLine = updateWithLastData
 }
 
-getEntitiesStream(process.stdin)
+getEntitiesStream(process.stdin, options)
 .filterAndMap(filterFormatAndSerializeEntity(options))
 .on('close', afterLastLine)
 .pipe(process.stdout)
