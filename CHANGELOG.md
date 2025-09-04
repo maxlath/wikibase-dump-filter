@@ -1,6 +1,9 @@
 # CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
+## 6.1.0 - 2025-09-04
+  * Added [`--include-size` option](https://github.com/maxlath/wikibase-dump-filter/blob/main/docs/cli.md#other-options)
+
 ## 6.0.0 - 2024-10-14
 **BREAKING CHANGE**: `wikibase-dump-filter` now uses the [ES module](https://nodejs.org/api/esm.html) syntax. This also requires to bump the minimal NodeJS version to `>= v14.0.0`.
 
