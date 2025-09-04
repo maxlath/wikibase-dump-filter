@@ -3,7 +3,7 @@ import should from 'should'
 
 describe('integration', () => {
   it('should accept --keep formatter and --claim filter', done => {
-    exec('cat ./tests/fixtures/entities | ./bin/wikibase-dump-filter --keep id --claim P31:Q5', (err, stdout, stderr) => {
+    exec('cat ./tests/fixtures/entities | ./bin/wikibase-dump-filter.js --keep id --claim P31:Q5', (err, stdout, stderr) => {
       if (err) return done(err)
       JSON.parse(stdout.split('\n')[0]).id.should.equal('Q23')
       JSON.parse(stdout.split('\n')[1]).id.should.equal('Q185')
@@ -14,7 +14,7 @@ describe('integration', () => {
   })
 
   it('should parse json simplify options', done => {
-    exec('cat ./tests/fixtures/Q22.json | ./bin/wikibase-dump-filter -s \'{"keepQualifiers":true}\'', (err, stdout, stderr) => {
+    exec('cat ./tests/fixtures/Q22.json | ./bin/wikibase-dump-filter.js -s \'{"keepQualifiers":true}\'', (err, stdout, stderr) => {
       if (err) return done(err)
       const entity = JSON.parse(stdout)
       entity.id.should.equal('Q22')
@@ -26,7 +26,7 @@ describe('integration', () => {
   })
 
   it('should parse url-encoded simplify options', done => {
-    exec('cat ./tests/fixtures/Q22.json | ./bin/wikibase-dump-filter -s "keepQualifiers=true"', (err, stdout, stderr) => {
+    exec('cat ./tests/fixtures/Q22.json | ./bin/wikibase-dump-filter.js -s "keepQualifiers=true"', (err, stdout, stderr) => {
       if (err) return done(err)
       const entity = JSON.parse(stdout)
       entity.id.should.equal('Q22')

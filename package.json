@@ -5,7 +5,7 @@
   "description": "Filter and format a newline-delimited JSON stream of Wikibase entities",
   "main": "lib/index.js",
   "bin": {
-    "wikibase-dump-filter": "bin/wikibase-dump-filter"
+    "wikibase-dump-filter": "bin/wikibase-dump-filter.js"
   },
   "files": [
     "lib",
@@ -15,8 +15,8 @@
   "scripts": {
     "git-pre-commit": "./scripts/githooks/pre-commit",
     "init-fixtures": "./scripts/init_fixtures",
-    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter tests",
-    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter tests",
+    "lint-fix": "eslint -c .eslintrc.cjs --fix lib bin/wikibase-dump-filter.js tests",
+    "lint": "eslint -c .eslintrc.cjs lib bin/wikibase-dump-filter.js tests",
     "postpublish": "git push --tags",
     "prepublishOnly": "npm run lint && npm test",
     "test": "mocha tests",
