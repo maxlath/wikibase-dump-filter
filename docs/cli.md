@@ -1,11 +1,11 @@
-# CLI
+# Command Line Interface (CLI) Overview
 
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
+- [Pre-filter entities](#pre-filter-entities)
 - [Filter entities](#filter-entities)
   - [By claims](#by-claims)
     - [claims logical operators](#claims-logical-operators)
@@ -23,9 +23,11 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-## Filter entities
+## Pre-filter entities
 
-:warning: Filtering entities is done by parsing entities JSON objects and applying logic on it; while it allows to build very specific filters, this will always be slower than filtering based on text patterns (typically with `grep`): considering your options to [prefilter](/docs/prefilter.md) the dump can save enormous amount of time.
+:warning: `wikibase-dump-filter` requires to parse each entity's JSON object and re-stringify it, which can take a considerable amount of time on a full dump. A lot of time can thus be saved by prefiltering the dump via tools operating on text pattern, such as `grep`: see [prefilter](/docs/prefilter.md) documentation.
+
+## Filter entities
 
 ### By [claims](https://www.wikidata.org/wiki/Wikidata:Glossary#Claims_and_statements)
 
