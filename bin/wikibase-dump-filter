@@ -51,6 +51,7 @@ if (showProgressBar) {
 
 getEntitiesStream(process.stdin, options)
 .filterAndMap(filterFormatAndSerializeEntity(options))
+.on('error', handleErrors)
 .on('close', afterLastLine)
 .pipe(process.stdout)
 .on('error', handleErrors)
