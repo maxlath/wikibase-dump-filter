@@ -1,6 +1,6 @@
 {
   "name": "wikibase-dump-filter",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "type": "module",
   "description": "Filter and format a newline-delimited JSON stream of Wikibase entities",
   "main": "lib/index.js",
