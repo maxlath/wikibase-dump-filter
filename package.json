@@ -51,12 +51,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxlath/wikibase-dump-filter.git"
+    "url": "https://codeberg.org/maxlath/wikibase-dump-filter"
   },
   "bugs": {
-    "url": "https://github.com/maxlath/wikibase-dump-filter/issues"
+    "url": "https://codeberg.org/maxlath/wikibase-dump-filter/issues"
   },
-  "homepage": "https://github.com/maxlath/wikibase-dump-filter#readme",
+  "homepage": "https://codeberg.org/maxlath/wikibase-dump-filter#readme",
   "engines": {
     "node": ">= 14.0.0"
   },
